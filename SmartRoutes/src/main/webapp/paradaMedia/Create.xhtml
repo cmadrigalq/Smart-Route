@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ParadaMediaCreateDlg" widgetVar="ParadaMediaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateParadaMediaTitle}">
+            <h:form id="ParadaMediaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{paradaMediaBean.paradaMedia != null}">
+                        <p:outputLabel value="#{bundle.CreateParadaMediaLabel_LUGAR}" for="LUGAR" />
+                        <p:inputText id="LUGAR" value="#{paradaMediaBean.paradaMedia.LUGAR}" title="#{bundle.CreateParadaMediaTitle_LUGAR}" />
+                        <p:outputLabel value="#{bundle.CreateParadaMediaLabel_VIAJE}" for="VIAJE" />
+                        <p:inputText id="VIAJE" value="#{paradaMediaBean.paradaMedia.VIAJE}" title="#{bundle.CreateParadaMediaTitle_VIAJE}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{paradaMediaBean.prepararCrear()}" value="#{bundle.Save}" update="display,:ParadaMediaListForm:datalist,:growl" oncomplete="handleSubmit(args,'ParadaMediaCreateDialog');"  onclick="ParadaMediaCreateDialog.hide()"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ParadaMediaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
