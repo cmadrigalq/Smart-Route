@@ -17,9 +17,9 @@
                         <h:outputText value="#{bundle.ViewParadaMediaLabel_LUGAR}"/>
                         <h:outputText value="#{paradaMediaBean.paradaMedia.LUGAR}" title="#{bundle.ViewParadaMediaTitle_LUGAR}"/>
                         <h:outputText value="#{bundle.ViewParadaMediaLabel_VIAJE}"/>
-                        <h:outputText value="#{paradaMediaBean.paradaMedia.VIAJE.id}" title="#{bundle.ViewParadaMediaTitle_VIAJE}"/>
+                        <h:outputText value="#{paradaMediaBean.paradaMedia.VIAJE.toString()}" title="#{bundle.ViewParadaMediaTitle_VIAJE}"/>
                         <h:outputText value="#{bundle.ViewParadaMediaLabel_POSICION}"/>
-                        <h:outputText value="#{paradaMediaBean.paradaMedia.POSICION.id}" title="#{bundle.ViewParadaMediaTitle_POSICION}"/>
+                        <h:outputText value="#{paradaMediaBean.paradaMedia.POSICION.toString()}" title="#{bundle.ViewParadaMediaTitle_POSICION}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="ParadaMediaViewDialog.hide()"/>
                 </h:panelGroup>

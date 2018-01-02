@@ -19,7 +19,7 @@
                             <f:selectItems value="#{tarifaBean.tarifas}"
                                            var="TARIFAItem"
                                            itemValue="#{TARIFAItem.id}"
-                                           itemLabel="#{TARIFAItem.id}" />
+                                           itemLabel="#{TARIFAItem.toString()}" />
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{rutaBean.ruta}" value="#{bundle.Save}" update="display,:RutaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'RutaEditDialog');" onclick="RutaEditDialog.hide()"/>

@@ -43,7 +43,7 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListParadaTitle_POSICION}"/>
                             </f:facet>
-                            <h:outputText value="#{item.POSICION}"/>
+                            <h:outputText value="#{item.POSICION.toString()}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{paradaBean.prepararCrear()}" update=":ParadaCreateForm" oncomplete="PF('ParadaCreateDialog').show()"/>

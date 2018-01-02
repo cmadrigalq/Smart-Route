@@ -37,31 +37,31 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListViajeTitle_RUTA}"/>
                             </f:facet>
-                            <h:outputText value="#{item.RUTA.id}"/>
+                            <h:outputText value="#{item.RUTA.toString()}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListViajeTitle_PARADA_INICIAL}"/>
                             </f:facet>
-                            <h:outputText value="#{item.PARADA_INICIAL.LUGAR}"/>
+                            <h:outputText value="#{item.PARADA_INICIAL.toString()}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListViajeTitle_PARADA_FINAL}"/>
                             </f:facet>
-                            <h:outputText value="#{item.PARADA_FINAL.LUGAR}"/>
+                            <h:outputText value="#{item.PARADA_FINAL.toString()}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListViajeTitle_HORARIO}"/>
                             </f:facet>
-                            <h:outputText value="#{item.HORARIO.id}"/>
+                            <h:outputText value="#{item.HORARIO.toString()}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListViajeTitle_BUS}"/>
                             </f:facet>
-                            <h:outputText value="#{item.BUS.NOMBRE}"/>
+                            <h:outputText value="#{item.BUS.toString()}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{viajeBean.prepararCrear()}" update=":ViajeCreateForm" oncomplete="PF('ViajeCreateDialog').show()"/>

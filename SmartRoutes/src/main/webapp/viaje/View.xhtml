@@ -15,15 +15,15 @@
                         <h:outputText value="#{bundle.ViewViajeLabel_id}"/>
                         <h:outputText value="#{viajeBean.viaje.id}" title="#{bundle.ViewViajeTitle_id}"/>
                         <h:outputText value="#{bundle.ViewViajeLabel_RUTA}"/>
-                        <h:outputText value="#{viajeBean.viaje.RUTA}" title="#{bundle.ViewViajeTitle_RUTA}"/>
+                        <h:outputText value="#{viajeBean.viaje.RUTA.toString()}" title="#{bundle.ViewViajeTitle_RUTA}"/>
                         <h:outputText value="#{bundle.ViewViajeLabel_PARADA_INICIAL}"/>
-                        <h:outputText value="#{viajeBean.viaje.PARADA_INICIAL}" title="#{bundle.ViewViajeTitle_PARADA_INICIAL}"/>
+                        <h:outputText value="#{viajeBean.viaje.PARADA_INICIAL.toString()}" title="#{bundle.ViewViajeTitle_PARADA_INICIAL}"/>
                         <h:outputText value="#{bundle.ViewViajeLabel_PARADA_FINAL}"/>
-                        <h:outputText value="#{viajeBean.viaje.PARADA_FINAL}" title="#{bundle.ViewViajeTitle_PARADA_FINAL}"/>
+                        <h:outputText value="#{viajeBean.viaje.PARADA_FINAL.toString()}" title="#{bundle.ViewViajeTitle_PARADA_FINAL}"/>
                         <h:outputText value="#{bundle.ViewViajeLabel_HORARIO}"/>
-                        <h:outputText value="#{viajeBean.viaje.HORARIO}" title="#{bundle.ViewViajeTitle_HORARIO}"/>
+                        <h:outputText value="#{viajeBean.viaje.HORARIO.toString()}" title="#{bundle.ViewViajeTitle_HORARIO}"/>
                         <h:outputText value="#{bundle.ViewViajeLabel_BUS}"/>
-                        <h:outputText value="#{viajeBean.viaje.BUS}" title="#{bundle.ViewViajeTitle_BUS}"/>
+                        <h:outputText value="#{viajeBean.viaje.BUS.toString()}" title="#{bundle.ViewViajeTitle_BUS}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="ViajeViewDialog.hide()"/>
                 </h:panelGroup>

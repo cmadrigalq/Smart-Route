@@ -17,7 +17,7 @@
                         <h:outputText value="#{bundle.ViewParadaLabel_LUGAR}"/>
                         <h:outputText value="#{paradaBean.parada.LUGAR}" title="#{bundle.ViewParadaTitle_LUGAR}"/>
                         <h:outputText value="#{bundle.ViewParadaLabel_POSICION}"/>
-                        <h:outputText value="#{paradaBean.parada.POSICION.id}" title="#{bundle.ViewParadaTitle_POSICION}"/>
+                        <h:outputText value="#{paradaBean.parada.POSICION.toString()}" title="#{bundle.ViewParadaTitle_POSICION}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="ParadaViewDialog.hide()"/>
                 </h:panelGroup>

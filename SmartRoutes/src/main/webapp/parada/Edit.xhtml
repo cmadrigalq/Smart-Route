@@ -21,7 +21,7 @@
                             <f:selectItems value="#{posicionBean.posiciones}"
                                            var="POSICIONItem"
                                            itemValue="#{POSICIONItem.id}"
-                                           itemLabel="#{POSICIONItem.id}" />
+                                           itemLabel="#{POSICIONItem.toString()}" />
                         </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{paradaBean.guardar()}" value="#{bundle.Save}" update="display,:ParadaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ParadaEditDialog');" onclick="ParadaEditDialog.hide()"/>
