@@ -13,17 +13,42 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{viajeBean.viaje != null}">
                         <p:outputLabel value="#{bundle.CreateViajeLabel_RUTA}" for="RUTA" />
-                        <p:inputText id="RUTA" value="#{viajeBean.selected.RUTA}" title="#{bundle.CreateViajeTitle_RUTA}" />
+                        <p:selectOneMenu id="RUTA" value="#{viajeBean.viaje.RUTA.id}" title="#{bundle.CreateViajeTitle_RUTA}" >
+                            <f:selectItems value="#{rutaBean.rutas}"
+                                           var="RUTAItem"
+                                           itemValue="#{RUTAItem.id}"
+                                           itemLabel="#{RUTAItem.id}" />
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateViajeLabel_PARADA_INICIAL}" for="PARADA_INICIAL" />
-                        <p:inputText id="PARADA_INICIAL" value="#{viajeBean.selected.PARADA_INICIAL}" title="#{bundle.CreateViajeTitle_PARADA_INICIAL}" />
+                        <p:selectOneMenu id="PARADA_INICIAL" value="#{viajeBean.viaje.PARADA_INICIAL.id}" title="#{bundle.CreateViajeTitle_PARADA_INICIAL}" >
+                            <f:selectItems value="#{paradaBean.paradas}"
+                                           var="PARADA_INICIALItem"
+                                           itemValue="#{PARADA_INICIALItem.id}"
+                                           itemLabel="#{PARADA_INICIALItem.LUGAR}" />
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateViajeLabel_PARADA_FINAL}" for="PARADA_FINAL" />
-                        <p:inputText id="PARADA_FINAL" value="#{v.selected.PARADA_FINAL}" title="#{bundle.CreateViajeTitle_PARADA_FINAL}" />
+                        <p:selectOneMenu id="PARADA_FINAL" value="#{viajeBean.viaje.PARADA_FINAL.id}" title="#{bundle.CreateViajeTitle_PARADA_FINAL}" >
+                            <f:selectItems value="#{paradaBean.paradas}"
+                                           var="PARADA_FINALItem"
+                                           itemValue="#{PARADA_FINALItem.id}"
+                                           itemLabel="#{PARADA_FINALItem.LUGAR}" />
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateViajeLabel_HORARIO}" for="HORARIO" />
-                        <p:inputText id="HORARIO" value="#{viajeBean.viaje.HORARIO}" title="#{bundle.CreateViajeTitle_HORARIO}" />
+                        <p:selectOneMenu id="HORARIO" value="#{viajeBean.viaje.HORARIO.id}" title="#{bundle.CreateViajeTitle_HORARIO}" >
+                            <f:selectItems value="#{horarioBean.horarios}"
+                                           var="HORARIOItem"
+                                           itemValue="#{HORARIOItem.id}"
+                                           itemLabel="#{HORARIOItem.id}" />
+                        </p:selectOneMenu>
                         <p:outputLabel value="#{bundle.CreateViajeLabel_BUS}" for="BUS" />
-                        <p:inputText id="BUS" value="#{viajeBean.viaje}" title="#{bundle.CreateViajeTitle_BUS}" />
+                        <p:selectOneMenu id="BUS" value="#{viajeBean.viaje.BUS.id}" title="#{bundle.CreateViajeTitle_BUS}" >
+                            <f:selectItems value="#{busBean.buses}"
+                                           var="BUSItem"
+                                           itemValue="#{BUSItem.id}"
+                                           itemLabel="#{BUSItem.NOMBRE}" />
+                        </p:selectOneMenu>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{viajeBean.guardar()}" value="#{bundle.Save}" update="display,:ViajeListForm:datalist,:growl" oncomplete="handleSubmit(args,'ViajeCreateDialog');"/>
+                    <p:commandButton actionListener="#{viajeBean.guardar()}" value="#{bundle.Save}" update="display,:ViajeListForm:datalist,:growl" oncomplete="handleSubmit(args,'ViajeCreateDialog');" onclick="ViajeCreateDialog.hide()"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="ViajeCreateDialog.hide()"/>
                 </h:panelGroup>
             </h:form>

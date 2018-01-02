@@ -15,7 +15,7 @@
                         <h:outputText value="#{bundle.ViewRutaLabel_id}"/>
                         <h:outputText value="#{rutaBean.ruta.id}" title="#{bundle.ViewRutaTitle_id}"/>
                         <h:outputText value="#{bundle.ViewRutaLabel_TARIFA}"/>
-                        <h:outputText value="#{rutaBean.ruta.TARIFA}" title="#{bundle.ViewRutaTitle_TARIFA}"/>
+                        <h:outputText value="#{rutaBean.ruta.TARIFA.id}" title="#{bundle.ViewRutaTitle_TARIFA}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{bundle.Close}" onclick="RutaViewDialog.hide()"/>
                 </h:panelGroup>

@@ -63,4 +63,9 @@ public class Tarifa implements Serializable {
     public void setINICIO(Date INICIO) {
         this.INICIO = INICIO;
     }
+
+    @Override
+    public String toString() {
+        return "Tarifa{" + "id=" + id + ", TARIFA=" + TARIFA + ", INICIO=" + INICIO + '}';
+    }
 }

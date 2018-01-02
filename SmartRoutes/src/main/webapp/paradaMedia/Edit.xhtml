@@ -13,13 +13,25 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{paradaMediaBean.paradaMedia != null}">
                         <p:outputLabel value="#{bundle.EditParadaMediaLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{paradaMediaBean.paradaMedia.id}" title="#{bundle.EditParadaMediaTitle_id}" />
+                        <p:inputText id="id" value="#{paradaMediaBean.paradaMedia.id}" title="#{bundle.EditParadaMediaTitle_id}" disabled="true" />
                         <p:outputLabel value="#{bundle.EditParadaMediaLabel_LUGAR}" for="LUGAR" />
                         <p:inputText id="LUGAR" value="#{paradaMediaBean.paradaMedia.LUGAR}" title="#{bundle.EditParadaMediaTitle_LUGAR}" />
                         <p:outputLabel value="#{bundle.EditParadaMediaLabel_VIAJE}" for="VIAJE" />
-                        <p:inputText id="VIAJE" value="#{paradaMediaBean.paradaMedia.VIAJE}" title="#{bundle.EditParadaMediaTitle_VIAJE}" />
+                        <p:selectOneMenu id="VIAJE" value="#{paradaMediaBean.paradaMedia.VIAJE.id}" title="#{bundle.EditParadaMediaTitle_VIAJE}" >
+                            <f:selectItems value="#{viajeBean.viajes}"
+                                           var="VIAJEItem"
+                                           itemValue="#{VIAJEItem.id}"
+                                           itemLabel="#{VIAJEItem.id}" />
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditParadaMediaLabel_POSICION}" for="POSICION" />
+                        <p:selectOneMenu id="POSICION" value="#{paradaMediaBean.paradaMedia.POSICION.id}" title="#{bundle.EditParadaMediaTitle_POSICION}" >
+                            <f:selectItems value="#{posicionBean.posiciones}"
+                                           var="POSICIONItem"
+                                           itemValue="#{POSICIONItem.id}"
+                                           itemLabel="#{POSICIONItem.id}" />
+                        </p:selectOneMenu>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{paradaMediaBean.paradaMedia}" value="#{bundle.Save}" update="display,:ParadaMediaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ParadaMediaEditDialog');" onclick="ParadaMediaEditDialog.hide()"/>
+                    <p:commandButton actionListener="#{paradaMediaBean.guardar()}" value="#{bundle.Save}" update="display,:ParadaMediaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ParadaMediaEditDialog');" onclick="ParadaMediaEditDialog.hide()"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="ParadaMediaEditDialog.hide()"/>
                 </h:panelGroup>
             </h:form>

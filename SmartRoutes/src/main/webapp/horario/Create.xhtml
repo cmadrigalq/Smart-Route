@@ -13,11 +13,11 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{horarioBean.horario != null}">
                         <p:outputLabel value="#{bundle.CreateHorarioLabel_HORA_SALIDA}" for="HORA_SALIDA" />
-                        <p:inputText id="HORA_SALIDA" value="#{horarioBean.horario.HORA_SALIDA}" title="#{bundle.CreateHorarioTitle_HORA_SALIDA}" />
+                        <p:calendar id="HORA_SALIDA" value="#{horarioBean.horario.HORA_SALIDA}" title="#{bundle.CreateHorarioTitle_HORA_SALIDA}" pattern="MM/dd/yyyy HH:mm" />
                         <p:outputLabel value="#{bundle.CreateHorarioLabel_HORA_LLEGAD}" for="HORA_LLEGAD" />
-                        <p:inputText id="HORA_LLEGAD" value="#{horarioBean.horario.HORA_LLEGAD}" title="#{bundle.CreateHorarioTitle_HORA_LLEGAD}" />
+                        <p:calendar id="HORA_LLEGAD" value="#{horarioBean.horario.HORA_LLEGAD}" title="#{bundle.CreateHorarioTitle_HORA_LLEGAD}" pattern="MM/dd/yyyy HH:mm" />
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{busBean.guardar()}" value="#{bundle.Save}" update="display,:HorarioListForm:datalist,:growl" oncomplete="handleSubmit(args,'HorarioCreateDialog');" onclick="HorarioCreateDialog.hide()"/>
+                    <p:commandButton actionListener="#{horarioBean.guardar()}" value="#{bundle.Save}" update="display,:HorarioListForm:datalist,:growl" oncomplete="handleSubmit(args,'HorarioCreateDialog');" onclick="HorarioCreateDialog.hide()"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="HorarioCreateDialog.hide()"/>
                 </h:panelGroup>
             </h:form>

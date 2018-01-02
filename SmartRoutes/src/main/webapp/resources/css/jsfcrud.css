@@ -99,5 +99,13 @@ tr.jsfcrud_even_row {
     margin-top: 10px !important;
 }
 .ui-icon{
-   background-image: url(images/cancel_16.png) !important;
+    background-image: url(images/cancel_16.png) !important;
+}
+
+#map { height: 100%; }
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }

@@ -39,6 +39,12 @@
                             </f:facet>
                             <h:outputText value="#{item.LUGAR}"/>
                         </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListParadaTitle_POSICION}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.POSICION}"/>
+                        </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{paradaBean.prepararCrear()}" update=":ParadaCreateForm" oncomplete="PF('ParadaCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ParadaViewForm" oncomplete="PF('ParadaViewDialog').show()" disabled="#{empty paradaBean.parada}"/>

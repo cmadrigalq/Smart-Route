@@ -25,7 +25,7 @@
                                  >
 
                         <p:ajax event="rowSelect"   listener="#{viajeBean.seleccionado}"    update="createButton viewButton editButton deleteButton"/>
-                        <p:ajax event="rowUnselect" listener==#{viajeBean.deseleccionado}"  update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" listener="#{viajeBean.deseleccionado}"  update="createButton viewButton editButton deleteButton"/>
 
                         <p:column>
                             <f:facet name="header">
@@ -37,31 +37,31 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListViajeTitle_RUTA}"/>
                             </f:facet>
-                            <h:outputText value="#{item.RUTA}"/>
+                            <h:outputText value="#{item.RUTA.id}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListViajeTitle_PARADA_INICIAL}"/>
                             </f:facet>
-                            <h:outputText value="#{item.PARADA_INICIAL}"/>
+                            <h:outputText value="#{item.PARADA_INICIAL.LUGAR}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListViajeTitle_PARADA_FINAL}"/>
                             </f:facet>
-                            <h:outputText value="#{item.PARADA_FINAL}"/>
+                            <h:outputText value="#{item.PARADA_FINAL.LUGAR}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListViajeTitle_HORARIO}"/>
                             </f:facet>
-                            <h:outputText value="#{item.HORARIO}"/>
+                            <h:outputText value="#{item.HORARIO.id}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListViajeTitle_BUS}"/>
                             </f:facet>
-                            <h:outputText value="#{item.BUS}"/>
+                            <h:outputText value="#{item.BUS.NOMBRE}"/>
                         </p:column>
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{viajeBean.prepararCrear()}" update=":ViajeCreateForm" oncomplete="PF('ViajeCreateDialog').show()"/>

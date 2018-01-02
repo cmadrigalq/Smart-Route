@@ -17,41 +17,42 @@
             <p:tabView style="background: url(images/2.jpg)">
                 <p:tab title="Maintenance">
                     <hr>
-                        <h:panelGrid columns="5" cellpadding="10" style="align-items: center">
+                        <h:panelGrid columns="8" cellpadding="10" style="align-items: center">
                             <p:button outcome="/parada/List" value="Bus Station Items" style="text-align: right"/>
 
                             <p:button outcome="/horario/List" value="Schedule Items" style="text-align: right"/>
+
+                            <p:button outcome="/paradaMedia/List" value="Medium Bus Station Items" style="text-align: right"/>
 
                             <p:button outcome="/bus/List" value="Bus Items" style="text-align: right"/>
 
                             <p:button outcome="/viaje/List" value="Travel Items" style="text-align: right"/>
 
                             <p:button outcome="/ruta/List" value="Route Items" style="text-align: right"/>
+
+                            <p:button outcome="/tarifa/List" value="Rate Items" style="text-align: right"/>
+                            
+                            <p:button outcome="/posicion/List" value="Position Items" style="text-align: right"/>
                         </h:panelGrid>
                     </hr>
                 </p:tab>
                 <p:tab title="Map">
                     <h:panelGrid columns="2" cellpadding="10">
-                        <p:button outcome="/parada/List" value="Map" style="text-align: right"/>
+                        <p:button outcome="/mapa/Mapa" value="Map" style="text-align: right"/>
                     </h:panelGrid>
                 </p:tab>
             </p:tabView>
         </div>
-        <br />
-        <h:link outcome="/bus/List" value="Show All Bus Items"/>
-        <br />
-        <h:link outcome="/horario/List" value="Show All Horario Items"/>
-        <br />
-        <h:link outcome="/parada/List" value="Show All Parada Items"/>
-        <br />
-        <h:link outcome="/paradaMedia/List" value="Show All ParadaMedia Items"/>
-        <br />
-        <h:link outcome="/ruta/List" value="Show All Ruta Items"/>
-        <br />
-        <h:link outcome="/tarifa/List" value="Show All Tarifa Items"/>
-        <br />
-        <h:link outcome="/viaje/List" value="Show All Viaje Items"/>
     </h:body>
+
+
+
+
+
+
+
+
+
 
 
 

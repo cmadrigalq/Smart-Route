@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PosicionCreateDlg" widgetVar="PosicionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreatePosicionTitle}">
+            <h:form id="PosicionCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{posicionBean.posicion != null}">
+                        <p:outputLabel value="#{bundle.CreatePosicionLabel_LATITUD}" for="LATITUD" />
+                        <p:inputText id="LATITUD" value="#{posicionBean.posicion.LATITUD}" title="#{bundle.CreatePosicionTitle_LATITUD}" />
+                        <p:outputLabel value="#{bundle.CreatePosicionLabel_LONGITUD}" for="LONGITUD" />
+                        <p:inputText id="LONGITUD" value="#{posicionBean.posicion.LONGITUD}" title="#{bundle.CreatePosicionTitle_LONGITUD}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{posicionBean.guardar()}" value="#{bundle.Save}" update="display,:PosicionListForm:datalist,:growl" oncomplete="handleSubmit(args,'PosicionCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="PosicionCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -62,4 +62,9 @@ public class Bus implements Serializable {
     public void setCANT_PASAJEROS(int CANT_PASAJEROS) {
         this.CANT_PASAJEROS = CANT_PASAJEROS;
     }
+
+    @Override
+    public String toString() {
+        return "Bus{" + "id=" + id + ", NOMBRE=" + NOMBRE + ", CANT_PASAJEROS=" + CANT_PASAJEROS + '}';
+    }
 }

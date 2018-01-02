@@ -15,9 +15,21 @@
                         <p:outputLabel value="#{bundle.CreateParadaMediaLabel_LUGAR}" for="LUGAR" />
                         <p:inputText id="LUGAR" value="#{paradaMediaBean.paradaMedia.LUGAR}" title="#{bundle.CreateParadaMediaTitle_LUGAR}" />
                         <p:outputLabel value="#{bundle.CreateParadaMediaLabel_VIAJE}" for="VIAJE" />
-                        <p:inputText id="VIAJE" value="#{paradaMediaBean.paradaMedia.VIAJE}" title="#{bundle.CreateParadaMediaTitle_VIAJE}" />
+                        <p:selectOneMenu id="VIAJE" value="#{paradaMediaBean.paradaMedia.VIAJE.id}" title="#{bundle.CreateParadaMediaTitle_VIAJE}" >
+                            <f:selectItems value="#{viajeBean.viajes}"
+                                           var="VIAJEItem"
+                                           itemValue="#{VIAJEItem.id}"
+                                           itemLabel="#{VIAJEItem.id}" />
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateParadaMediaLabel_POSICION}" for="POSICION" />
+                        <p:selectOneMenu id="POSICION" value="#{paradaMediaBean.paradaMedia.POSICION.id}" title="#{bundle.CreateParadaMediaTitle_POSICION}" >
+                            <f:selectItems value="#{posicionBean.posiciones}"
+                                           var="POSICIONItem"
+                                           itemValue="#{POSICIONItem.id}"
+                                           itemLabel="#{POSICIONItem.id}" />
+                        </p:selectOneMenu>
                     </p:panelGrid>
-                    <p:commandButton actionListener="#{paradaMediaBean.prepararCrear()}" value="#{bundle.Save}" update="display,:ParadaMediaListForm:datalist,:growl" oncomplete="handleSubmit(args,'ParadaMediaCreateDialog');"  onclick="ParadaMediaCreateDialog.hide()"/>
+                    <p:commandButton actionListener="#{paradaMediaBean.guardar()}" value="#{bundle.Save}" update="display,:ParadaMediaListForm:datalist,:growl" oncomplete="handleSubmit(args,'ParadaMediaCreateDialog');"  onclick="ParadaMediaCreateDialog.hide()"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="ParadaMediaCreateDialog.hide()"/>
                 </h:panelGroup>
             </h:form>
@@ -25,3 +37,4 @@
 
     </ui:composition>
 </html>
+

@@ -32,10 +32,10 @@ public class Viaje implements Serializable {
     @JoinColumn(name = "RUTA", referencedColumnName = "ID_RUTA")
     private Ruta RUTA;
     @OneToOne
-    @JoinColumn(name = "PARADA_INICIAL", referencedColumnName = "ID_PARADA_INICIAL")
+    @JoinColumn(name = "PARADA_INICIAL", referencedColumnName = "ID_PARADA")
     private Parada PARADA_INICIAL;
     @OneToOne
-    @JoinColumn(name = "PARADA_FINAL", referencedColumnName = "ID_PARADA_FINAL")
+    @JoinColumn(name = "PARADA_FINAL", referencedColumnName = "ID_PARADA")
     private Parada PARADA_FINAL;
     @OneToOne
     @JoinColumn(name = "HORARIO", referencedColumnName = "ID_HORARIO")
@@ -107,5 +107,10 @@ public class Viaje implements Serializable {
 
     public void setBUS(Bus BUS) {
         this.BUS = BUS;
+    }
+
+    @Override
+    public String toString() {
+        return "Viaje{" + "id=" + id + ", RUTA=" + RUTA + ", PARADA_INICIAL=" + PARADA_INICIAL + ", PARADA_FINAL=" + PARADA_FINAL + ", HORARIO=" + HORARIO + ", BUS=" + BUS + '}';
     }
 }

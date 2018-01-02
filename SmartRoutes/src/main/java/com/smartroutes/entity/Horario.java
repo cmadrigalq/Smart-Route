@@ -64,4 +64,9 @@ public class Horario implements Serializable {
     public void setHORA_LLEGAD(Date HORA_LLEGAD) {
         this.HORA_LLEGAD = HORA_LLEGAD;
     }
+
+    @Override
+    public String toString() {
+        return "Horario{" + "id=" + id + ", HORA_SALIDA=" + HORA_SALIDA + ", HORA_LLEGAD=" + HORA_LLEGAD + '}';
+    }
 }

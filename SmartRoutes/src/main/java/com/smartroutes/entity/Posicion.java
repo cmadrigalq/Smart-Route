@@ -11,8 +11,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -20,24 +18,25 @@ import javax.persistence.Table;
  * @author jos_c
  */
 @Entity
-@Table(name = "RUTA")
-public class Ruta implements Serializable {
+@Table(name = "POSICION")
+public class Posicion implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column (name = "ID_RUTA")
+    @Column (name = "ID_POS")
     private Long id;
-    @OneToOne
-    @JoinColumn(name = "TARIFA", referencedColumnName = "ID_TARIFA")
-    private Tarifa TARIFA;
+    @Column(name = "LATITUD")
+    private Long LATITUD;
+    @Column(name = "LONGITUD")
+    private Long LONGITUD;
 
-    public Ruta(Long id, Tarifa TARIFA) {
+    public Posicion(Long id, Long LATITUD, Long LONGITUD) {
         this.id = id;
-        this.TARIFA = TARIFA;
+        this.LATITUD = LATITUD;
+        this.LONGITUD = LONGITUD;
     }
 
-    public Ruta() {
-        TARIFA = new Tarifa();
+    public Posicion() {
     }
 
     public Long getId() {
@@ -48,17 +47,24 @@ public class Ruta implements Serializable {
         this.id = id;
     }
 
-    public Tarifa getTARIFA() {
-        return TARIFA;
+    public Long getLATITUD() {
+        return LATITUD;
     }
 
-    public void setTARIFA(Tarifa TARIFA) {
-        this.TARIFA = TARIFA;
+    public void setLATITUD(Long LATITUD) {
+        this.LATITUD = LATITUD;
     }
-    
+
+    public Long getLONGITUD() {
+        return LONGITUD;
+    }
+
+    public void setLONGITUD(Long LONGITUD) {
+        this.LONGITUD = LONGITUD;
+    }
 
     @Override
     public String toString() {
-        return "Ruta{" + "id=" + id + ", TARIFA=" + TARIFA + '}';
+        return "Posicion{" + "id=" + id + ", LATITUD=" + LATITUD + ", LONGITUD=" + LONGITUD + '}';
     }
 }

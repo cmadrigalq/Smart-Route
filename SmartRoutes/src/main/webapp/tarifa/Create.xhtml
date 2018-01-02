@@ -12,12 +12,10 @@
             <h:form id="TarifaCreateForm">
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{tarifaBean.tarifa != null}">
-                        <p:outputLabel value="#{bundle.CreateTarifaLabel_id}" for="id" />
-                        <p:inputText id="id" value="#{tarifaBean.tarifa.id}" title="#{bundle.CreateTarifaTitle_id}" />
                         <p:outputLabel value="#{bundle.CreateTarifaLabel_TARIFA}" for="TARIFA" />
                         <p:inputText id="TARIFA" value="#{tarifaBean.tarifa.TARIFA}" title="#{bundle.CreateTarifaTitle_TARIFA}" />
                         <p:outputLabel value="#{bundle.CreateTarifaLabel_INICIO}" for="INICIO" />
-                        <p:inputText id="INICIO" value="#{tarifaBean.tarifa.INICIO}" title="#{bundle.CreateTarifaTitle_INICIO}" />
+                        <p:calendar id="INICIO" value="#{tarifaBean.tarifa.INICIO}" title="#{bundle.CreateTarifaTitle_INICIO}" showOn="button" />
                     </p:panelGrid>
                     <p:commandButton actionListener="#{tarifaBean.guardar()}" value="#{bundle.Save}" update="display,:TarifaListForm:datalist,:growl" oncomplete="handleSubmit(args,'TarifaCreateDialog');" onclick="TarifaCreateDialog.hide()"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="TarifaCreateDialog.hide()"/>

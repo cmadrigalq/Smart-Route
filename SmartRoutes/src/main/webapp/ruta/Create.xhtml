@@ -13,7 +13,12 @@
                 <h:panelGroup id="display">
                     <p:panelGrid columns="2" rendered="#{rutaBean.ruta != null}">
                         <p:outputLabel value="#{bundle.CreateRutaLabel_TARIFA}" for="TARIFA" />
-                        <p:inputText id="TARIFA" value="#{rutaBean.ruta.TARIFA}" title="#{bundle.CreateRutaTitle_TARIFA}" />
+                        <p:selectOneMenu id="TARIFA" value="#{rutaBean.ruta.TARIFA.id}" title="#{bundle.CreateRutaTitle_TARIFA}" >
+                            <f:selectItems value="#{tarifaBean.tarifas}"
+                                           var="TARIFAItem"
+                                           itemValue="#{TARIFAItem.id}"
+                                           itemLabel="#{TARIFAItem.id}" />
+                        </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{rutaBean.guardar()}" value="#{bundle.Save}" update="display,:RutaListForm:datalist,:growl" oncomplete="handleSubmit(args,'RutaCreateDialog');" onclick="RutaCreateDialog.hide()"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="RutaCreateDialog.hide()"/>
