@@ -1,0 +1,379 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 6, 2016, 11:28:20 PM
+    Author     : Meliss
+*/
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+@import url(https://fonts.googleapis.com/css?family=Muli);
+@import url(https://fonts.googleapis.com/css?family=Quicksand);
+
+
+.intro {
+    display: table;
+    width: 100%;
+    padding-top:90px;
+    text-align: center;
+    background: url(../imagenes/fondo.png) no-repeat bottom center scroll;  
+    padding-bottom: 30px;
+}
+
+.intro2{
+
+    display: table-cell;
+    vertical-align: middle;
+}
+.titulo{
+    font-size: 40px;
+    color:#5cb85c;
+
+}
+
+.titulo2{
+    font-size: 30px;
+    color:#5cb83c;
+
+}
+.titulo3{
+    font-size: 20px;
+    color:#5cb83c;
+
+}
+.titulo4{
+    font-size: 20px;
+    color:#e6e6e6
+
+}
+
+.navbar-custom {
+    padding: 20px 0;
+    border-bottom: 0;
+    letter-spacing: 1px;
+    background: 0 0;
+    -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
+    -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
+    transition: background .5s ease-in-out,padding .5s ease-in-out;
+    
+    
+}
+
+.contenido1{
+    padding-top: 50px;
+    text-align: center;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color:#000;
+    color:#c0c0c0;
+    padding-bottom: 100px;
+    
+}
+
+.contenido2{
+   
+    display: table;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    color: #fff;
+    background-color: #000;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    background: url(../imagenes/fondo2.png) no-repeat bottom center scroll;
+}
+
+#slideshow {
+    position:relative;
+    height:350px;
+    
+}
+
+#slideshow IMG {
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:8;
+    
+}
+
+#slideshow IMG.active {
+    z-index:10;
+}
+
+#slideshow IMG.last-active {
+    z-index:9;
+}
+
+.fondo{
+    background:navy;   
+}    
+
+/*sign in*/
+#signin,#categorias{
+    padding-top: 90px;
+    
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+       
+
+}
+.panel-login {
+	border-color: #ccc;
+	-webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+	box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+}
+.panel-login>.panel-heading {
+	color: #00415d;
+	background-color: #fff;
+	border-color: #fff;
+	text-align:center;
+}
+.panel-login>.panel-heading a{
+	text-decoration: none;
+	color: #666;
+	font-weight: bold;
+	font-size: 15px;
+	-webkit-transition: all 0.1s linear;
+	-moz-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+}
+.panel-login>.panel-heading a.active{
+	color: #029f5b;
+	font-size: 18px;
+}
+.panel-login>.panel-heading hr{
+	margin-top: 10px;
+	margin-bottom: 0px;
+	clear: both;
+	border: 0;
+	height: 1px;
+	background-image: -webkit-linear-gradient(left,rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.15),rgba(0, 0, 0, 0));
+	background-image: -moz-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+	background-image: -ms-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+	background-image: -o-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
+}
+.panel-login input[type="text"],.panel-login input[type="email"],.panel-login input[type="password"] {
+	height: 45px;
+	border: 1px solid #ddd;
+	font-size: 16px;
+	-webkit-transition: all 0.1s linear;
+	-moz-transition: all 0.1s linear;
+	transition: all 0.1s linear;
+}
+.panel-login input:hover,
+.panel-login input:focus {
+	outline:none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	border-color: #ccc;
+}
+.btn-login {
+	background-color: #59B2E0;
+	outline: none;
+	color: #fff;
+	font-size: 14px;
+	height: auto;
+	font-weight: normal;
+	padding: 14px 0;
+	text-transform: uppercase;
+	border-color: #59B2E6;
+}
+.btn-login:hover,
+.btn-login:focus {
+	color: #fff;
+	background-color: #53A3CD;
+	border-color: #53A3CD;
+}
+.forgot-password {
+	text-decoration: underline;
+	color: #888;
+}
+.forgot-password:hover,
+.forgot-password:focus {
+	text-decoration: underline;
+	color: #666;
+}
+
+.btn-register {
+	background-color: #1CB94E;
+	outline: none;
+	color: #fff;
+	font-size: 14px;
+	height: auto;
+	font-weight: normal;
+	padding: 14px 0;
+	text-transform: uppercase;
+	border-color: #1CB94A;
+}
+.btn-register:hover,
+.btn-register:focus {
+	color: #fff;
+	background-color: #1CA347;
+	border-color: #1CA347;
+}
+
+
+ul{
+    font-family: Lobster;
+}
+
+.nav>li>a:focus, .nav>li>a:hover{
+    transition: background-color 1s;
+}
+
+.nav>li>a:focus, .nav>li>a:hover{
+    background-color: rgba(255,255,255,.7);
+}
+
+.dropdown-menu{
+    opacity:0.7;
+    font-weight: bold;
+}
+
+.pImage{
+    width: 120px;
+    height: 220px;
+
+}
+
+.pContenedor{
+   
+}
+
+.paginas{
+    align: center;
+    font-weight: 900;
+    font-size: 20px;
+}
+#categorias .jumbotron{
+    background-image: url('../imagenes/fondis.jpg');
+    color: white;    
+}
+
+#actores{
+    font-family: Quicksand;
+}
+
+#form {
+  width: 250px;
+  margin: 0 auto;
+  height: 50px;
+}
+
+#form p {
+  text-align: center;
+}
+
+#form label {
+  font-size: 20px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+label {
+  color: grey;
+}
+
+.clasificacion {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+label:hover,
+label:hover ~ label {
+  color: orange;
+}
+
+input[type="radio"]:checked ~ label {
+  color: orange;
+}
+#calificacion{
+    float:left;
+}
+
+.modal-dialog{
+     overflow-y: initial !important;
+}
+
+.modal-body{
+    height: 350px;
+    overflow-y: auto;
+}
+.modal{
+    
+     opacity:10;}
+.modal-dialog{
+    overflow-y: initial !important;
+    color:white;
+  
+}
+
+.modal-body{
+    height: 350px;
+    overflow-y: auto;
+    background-color: #424242;
+    color:white;
+}
+
+.modal-title{
+    color:white;
+}
+
+.modal-footer{
+    background-color:#424242; 
+}
+.modal-header{
+    background-color: #424242;
+}
+
+#sinopsis{
+    text-align: left;
+}
+
+.table{
+    font-weight: 900;
+    color: white;
+}
+
+.table a{
+    color: white;
+}
+
+#filasP:hover{
+    background: #0B610B;
+}
+
+.table a:hover, table tr:first-child{
+    color:white;
+    text-decoration: none;
+}
+tr:hover td{
+    color:black;
+}
+
+#divPrecioTotal{
+    color:white;
+}
+#tablaArticulo2 :hover{
+    color:white;
+    text-decoration: none;
+}
+
+
+#imagenpeli {
+    width: 30%;
+	height: 30%;
+}
+
