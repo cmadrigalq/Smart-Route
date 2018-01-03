@@ -70,7 +70,7 @@ setTimeout(function () {
 function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
         center: new google.maps.LatLng(10, -444),
-        zoom: 8,
+        zoom: 9,
         mapTypeId: google.maps.MapTypeId.HYBRID
     });
 
@@ -94,6 +94,7 @@ function initMap() {
 
             google.maps.event.addListener(map, 'click', function (event) {
                 addMarker(event.latLng, map);
+                ruta(event.latLng);
             });
 
             google.maps.event.addListener(marker, 'click', function (event) {
