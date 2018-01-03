@@ -70,8 +70,23 @@ setTimeout(function () {
 function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
         center: new google.maps.LatLng(10, -444),
-        zoom: 8,
-        mapTypeId: google.maps.MapTypeId.HYBRID
+        zoom: 9,
+        mapTypeId: google.maps.MapTypeId.HYBRID,
+        mapTypeControl: true,
+        mapTypeControlOptions: {
+            style: google.maps.MapTypeControlStyle.DROPDOWN_MENU, mapTypeIds: [
+                google.maps.MapTypeId.HYBRID,
+                google.maps.MapTypeId.ROADMAP,
+                google.maps.MapTypeId.TERRAIN
+            ]
+
+        },
+
+        zoomControl: true,
+
+        zoomControlOptions: {
+            style: google.maps.ZoomControlStyle.SMALL
+        }
     });
 
     if (navigator.geolocation) {
@@ -94,6 +109,7 @@ function initMap() {
 
             google.maps.event.addListener(map, 'click', function (event) {
                 addMarker(event.latLng, map);
+                ruta(event.latLng);
             });
 
             google.maps.event.addListener(marker, 'click', function (event) {
