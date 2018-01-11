@@ -4,6 +4,8 @@
     Author     : Melissa
 --%>
 
+<%@page import="Servicios.ServicioParada"%>
+<%@page import="entidades.Parada"%>
 <%@page import="Servicios.ServicioPosicion"%>
 <%@page import="entidades.Posicion"%>
 <%@page import="java.util.List"%>
@@ -61,11 +63,8 @@
                     <li>
                         <a  href="paradas.jsp">Paradas</a>
                            
-                    </li>
-                    <li>
-                        <a  href="mapa.jsp">Mapa</a>
-                    </li>  
-                    
+                    </li>                   
+         
                 </ul>
             </div>
            
@@ -93,14 +92,13 @@
       <option>Elija un Origen</option>
             <% 
             /*EJEMPLO!!!!!!! (COMENTAR!)**/
-            ServicioPosicion servicio = new ServicioPosicion();
+            ServicioParada servicioP = new ServicioParada();
             try{
-                List<Posicion>posc = servicio.findAll();
-                for(Posicion p : posc){
+                List<Parada>parad = servicioP.findAll();
+                for(Parada p : parad){
                   out.println(
-                        String.format("<option id='%s'>**(%d,%d)**</option>"
-                                ,p.getIdPos(),p.getLatitud(),p.getLongitud()
-                        )
+                        String.format("<option id='%s'>-%s-</option>"
+                                ,p.getPosicion(),p.getLugar()                     )
                   );
                 }
             }catch(Exception ex){
@@ -120,6 +118,21 @@
       <h4 class="titulo3" >DESTINO</h4>
       <select data-live-search="true" class="selectpicker form-control btn-info" id="origen">
        <option>Elija un Destino</option>
+        <% 
+            /*EJEMPLO!!!!!!! (COMENTAR!)**/
+            ServicioParada servicioP2 = new ServicioParada();
+            try{
+                List<Parada>parad = servicioP2.findAll();
+                for(Parada p2 : parad){
+                  out.println(
+                        String.format("<option id='%s'>-%s-</option>"
+                                ,p2.getPosicion(),p2.getLugar()                     )
+                  );
+                }
+            }catch(Exception ex){
+                out.print("<option>"+ex.toString()+"</option>");
+            }
+            /*FINAL DE EJEMPLO!*/%>
       </select>
     </div>
   </div>

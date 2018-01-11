@@ -43,10 +43,18 @@ Contributor(s):
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/SMART_ROUTES?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/SMART_ROUTES</property>
     <property name="hibernate.connection.username">SMARTROUTE</property>
     <property name="hibernate.connection.password">$SMARTROUTE$</property>
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.current_session_context_class">thread</property>
+    <mapping resource="cr/ac/una/globales/smartroute/domain/Posicion.hbm.xml"/>
+    <mapping resource="cr/ac/una/globales/smartroute/domain/Horario.hbm.xml"/>
+    <mapping resource="cr/ac/una/globales/smartroute/domain/Bus.hbm.xml"/>
+    <mapping resource="cr/ac/una/globales/smartroute/domain/Tarifa.hbm.xml"/>
+    <mapping resource="cr/ac/una/globales/smartroute/domain/Ruta.hbm.xml"/>
+    <mapping resource="cr/ac/una/globales/smartroute/domain/Viaje.hbm.xml"/>
+    <mapping resource="cr/ac/una/globales/smartroute/domain/Paradamedia.hbm.xml"/>
+    <mapping resource="cr/ac/una/globales/smartroute/domain/Parada.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
