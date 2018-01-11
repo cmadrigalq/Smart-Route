@@ -42,7 +42,7 @@ public class ServicioPosicion extends ServicioBase{
      * @param lon
      * @return  los pts en un rango a la redonda
      */
-    public List<Posicion> getLatLongAprox(Integer lat, Integer lon) {
+    public List<Posicion> getLatLongAprox(Double lat, Double lon) {
         try {
             String jql = "SELECT p FROM POSICION p "
                     + " where p.latitud >= :par1 + 0.005  AND p.latitud <= :par2 - 0.005 "

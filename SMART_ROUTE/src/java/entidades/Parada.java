@@ -29,8 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Parada.findAll", query = "SELECT p FROM Parada p")
-    , @NamedQuery(name = "Parada.findByIdParada", query = "SELECT p FROM Parada p WHERE p.idParada = :idParada")
-    , @NamedQuery(name = "Parada.findByLugar", query = "SELECT p FROM Parada p WHERE p.lugar = :lugar")})
+    , @NamedQuery(name = "Parada.findByIdParada", query = "SELECT p FROM Parada p WHERE p.idParada = :idParada")})
 public class Parada implements Serializable {
 
     private static final long serialVersionUID = 1L;

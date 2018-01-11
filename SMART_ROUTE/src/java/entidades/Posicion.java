@@ -40,10 +40,10 @@ public class Posicion implements Serializable {
     private Integer idPos;
     
     @Column(name = "LATITUD")
-    private Integer latitud;
+    private Double latitud;
     
     @Column(name = "LONGITUD")
-    private Integer longitud;
+    private Double longitud;
     @OneToMany(mappedBy = "posicion")
     private List<Paradamedia> paradamediaList;
     @OneToMany(mappedBy = "posicion")
@@ -64,19 +64,19 @@ public class Posicion implements Serializable {
         this.idPos = idPos;
     }
 
-    public Integer getLatitud() {
+    public Double getLatitud() {
         return latitud;
     }
 
-    public void setLatitud(Integer latitud) {
+    public void setLatitud(Double latitud) {
         this.latitud = latitud;
     }
 
-    public Integer getLongitud() {
+    public Double getLongitud() {
         return longitud;
     }
 
-    public void setLongitud(Integer longitud) {
+    public void setLongitud(Double longitud) {
         this.longitud = longitud;
     }
 
