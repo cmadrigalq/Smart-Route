@@ -84,8 +84,7 @@
                     zoomControlOptions: {
                         style: google.maps.ZoomControlStyle.SMALL
                     }
-                }
-                );
+                });
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(function (position) {
                         var pos = {
