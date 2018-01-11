@@ -61,8 +61,11 @@
                     <li>
                         <a  href="paradas.jsp">Paradas</a>
                            
-                    </li>                   
-         
+                    </li>
+                    <li>
+                        <a  href="mapa.jsp">Mapa</a>
+                    </li>  
+                    
                 </ul>
             </div>
            
