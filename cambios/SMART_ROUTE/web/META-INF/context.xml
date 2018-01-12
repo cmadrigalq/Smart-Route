@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" 
+         path="/SMART_ROUTES_">
+  <Resource driverClassName="com.mysql.jdbc.Driver" 
+            maxActive="200" 
+            maxIdle="30"
+            maxWait="10000" 
+            name="jdbc/SMART_ROUTE" 
+            password="$SMARTROUTE$" 
+            type="javax.sql.DataSource" 
+            url="jdbc:mysql://localhost:3306/SMART_ROUTES?zeroDateTimeBehavior=convertToNull" 
+            username="SMARTROUTE"/>
+</Context>
