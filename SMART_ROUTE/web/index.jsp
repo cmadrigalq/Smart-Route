@@ -31,6 +31,7 @@
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script src="jquery-3.0.0.min.js"></script>
         <script src="css/jquery-1.12.4.min.js" type="text/javascript"></script>
+        <script src="js/Mapa.js" type="text/javascript"></script>
     </head>
 
     <body class="fondo">
@@ -64,7 +65,6 @@
                         </li>
                         <li>
                             <a  href="paradas.jsp">Paradas</a>
-
                         </li>                   
 
                     </ul>
@@ -72,7 +72,6 @@
 
             </div> 
         </nav>
-
 
         <!-- top de la pagina-->  
         <header class="intro">
@@ -100,35 +99,7 @@
                                 for (Parada p : parad) {
                                     out.println(
                                             String.format("<option id='%s'>-%s-</option>",
-                                                     p.getPosicion(), p.getLugar())
-                                    );
-                                }
-                            } catch (Exception ex) {
-                                out.print("<option>" + ex.toString() + "</option>");
-                }
-                /*FINAL DE EJEMPLO!*/%>
-                    </select>
-                </div>
-            </div>
-        </div>
-
-
-
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="form-group" >
-                    <h4 class="titulo3" >DESTINO</h4>
-                    <select data-live-search="true" class="selectpicker form-control btn-info" id="origen">
-                        <option>Elija un Destino</option>
-                        <%
-                 /*EJEMPLO!!!!!!! (COMENTAR!)**/
-                            ServicioParada servicioP2 = new ServicioParada();
-                            try {
-                                List<Parada> parad = servicioP2.findAll();
-                                for (Parada p2 : parad) {
-                                    out.println(
-                                            String.format("<option id='%s'>-%s-</option>",
-                                                     p2.getPosicion(), p2.getLugar())
+                                                    p.getPosicion(), p.getLugar())
                                     );
                                 }
                             } catch (Exception ex) {
@@ -139,8 +110,41 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group" >
+                    <h4 class="titulo3" >DESTINO</h4>
+                    <select data-live-search="true" class="selectpicker form-control btn-info" id="origen">
+                        <option>Elija un Destino</option>
+                        <%
+ /*EJEMPLO!!!!!!! (COMENTAR!)**/
+                            ServicioParada servicioP2 = new ServicioParada();
+                            try {
+                                List<Parada> parad = servicioP2.findAll();
+                                for (Parada p2 : parad) {
+                                    out.println(
+                                            String.format("<option id='%s'>-%s-</option>",
+                                                    p2.getPosicion(), p2.getLugar())
+                                    );
+                                }
+                            } catch (Exception ex) {
+                                out.print("<option>" + ex.toString() + "</option>");
+                            }
+                            /*FINAL DE EJEMPLO!*/%>
+                    </select>
+                </div>
+            </div>
+        </div>
+                    
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group" >
+                    <div id="map" style="width: 100%; height: 300px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIhBttn3yBK9T_SBflk1RRuoNbD_Q-QWM&amp;callback=initMap"></script>
     </body>
-
-
-
 </html>
