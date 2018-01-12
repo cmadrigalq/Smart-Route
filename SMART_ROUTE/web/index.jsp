@@ -98,8 +98,8 @@
                                 List<Parada> parad = servicioP.findAll();
                                 for (Parada p : parad) {
                                     out.println(
-                                            String.format("<option id='%s'>-%s-</option>",
-                                                    p.getPosicion(), p.getLugar())
+                                            String.format("<option id='%s' onclick='changeOrigen(%f, %f)'>-%s-</option>",
+                                                    p.getPosicion(), p.getPosicion().getLatitud(), p.getPosicion().getLongitud(), p.getLugar())
                                     );
                                 }
                             } catch (Exception ex) {
@@ -124,8 +124,8 @@
                                 List<Parada> parad = servicioP2.findAll();
                                 for (Parada p2 : parad) {
                                     out.println(
-                                            String.format("<option id='%s'>-%s-</option>",
-                                                    p2.getPosicion(), p2.getLugar())
+                                            String.format("<option id='%s' onclick='changeDestino(%f, %f)'>-%s-</option>",
+                                                    p2.getPosicion(), p2.getPosicion().getLatitud(), p2.getPosicion().getLongitud(), p2.getLugar())
                                     );
                                 }
                             } catch (Exception ex) {
@@ -136,7 +136,15 @@
                 </div>
             </div>
         </div>
-                    
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group" >
+                    <input type="button" id="calRuta" value="Calcular Ruta" onclick="calcularRuta()">
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="form-group" >

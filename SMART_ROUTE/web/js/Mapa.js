@@ -1,5 +1,11 @@
+var markerOrigen;
+var markerDestino;
 var marker;
 var map;
+var directionsService;
+var directionRenderer;
+var objConfigDR;
+var objConfigDS;
 function addMarker(location) {
     marker = new google.maps.Marker({
         position: location,
@@ -30,34 +36,7 @@ function initMap() {
 
             google.maps.event.addListener(map, 'click', function (event) {
                 addMarker(event.latLng);
-                google.maps.event.addListener(marker, 'click', function () {
-                    ruta();
-                })
             });
-
-            function ruta() {
-                var objConfigDR = {
-                    map: map,
-                }
-                var objConfigDS = {
-                    origin: pos,
-                    destination: marker.position,
-                    travelMode: google.maps.TravelMode.DRIVING
-                }
-
-                var directionsService = new google.maps.DirectionsService();
-                var directionRenderer = new google.maps.DirectionsRenderer(objConfigDR);
-                directionsService.route(objConfigDS, fnRutear);
-                function fnRutear(resultados, status) {
-                    if (status == 'OK') {
-                        directionRenderer.setDirections(resultados);
-                    } else {
-                        alert('error' + status);
-                    }
-                }
-            }
-
-
         }, function () {
             handleLocationError(true, infoWindow, map.getCenter());
         });
@@ -90,3 +69,56 @@ function downloadUrl(url, callback) {
 }
 
 function doNothing() {}
+
+function calcularRuta() {
+    if (!markerOrigen || !markerDestino) {
+        alert('Seleccionar el origen y destino');
+        return;
+    }
+    objConfigDR = {
+        map: map,
+    }
+    objConfigDS = {
+        origin: markerOrigen.position,
+        destination: markerDestino.position,
+        travelMode: google.maps.TravelMode.DRIVING
+    }
+    
+    if (directionsService) directionRenderer.setMap(null);
+    directionsService = new google.maps.DirectionsService();
+    directionRenderer = new google.maps.DirectionsRenderer(objConfigDR);
+    directionsService.route(objConfigDS, fnRutear);
+    function fnRutear(resultados, status) {
+        if (status == 'OK') {
+            directionRenderer.setDirections(resultados);
+        } else {
+            alert('error' + status);
+        }
+    }
+}
+
+function changeOrigen(lat, long) {
+    if (markerOrigen) markerOrigen.setMap(null);
+    markerOrigen = new google.maps.Marker({
+        position: {
+            lat: lat,
+            lng: long
+        },
+        map: map,
+        draggable: true,
+        animation: google.maps.Animation.DROP
+    });
+}
+
+function changeDestino(lat, long) {
+    if (markerDestino) markerDestino.setMap(null);
+    markerDestino = new google.maps.Marker({
+        position: {
+            lat: lat,
+            lng: long
+        },
+        map: map,
+        draggable: true,
+        animation: google.maps.Animation.DROP
+    });
+}
