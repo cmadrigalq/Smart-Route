@@ -8,12 +8,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mapa</title>
-
-        <!-- CSS -->
-
         <link rel="stylesheet" type="text/css" href="css/estilos.css"/>
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
@@ -23,45 +17,12 @@
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script src="jquery-3.0.0.min.js"></script>
         <script src="css/jquery-1.12.4.min.js" type="text/javascript"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Mapa</title>
     </head>
     <body>
-        <nav class="navbar navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button"  class="navbar-toggle " data-toggle="collapse" data-target=".navbar-main-collapse">                   
-                    </button>
-                    <a class="navbar-brand page-scroll" href="index.jsp">
-                        <img src="imagenes/logo2.png"/>
-                    </a>
-                </div>
-
-                <!-- lista de links-->
-                <div class="collapse navbar-collapse navbar-right navbar-main-collapse a" >
-                    <ul  class="nav navbar-nav" >
-                        <!-- -->
-                        <li class="hidden">
-                            <a href=""></a>
-                        </li>
-                        <li>
-                            <a href="index.jsp">Rutas</a>
-                        </li>
-                        <li>
-                            <a  href="horarios.jsp">Horarios</a>
-                        </li>
-                        <li>
-                            <a  href="tarifas.jsp">Tarifas</a>
-                        </li>
-                        <li>
-                            <a  href="mapa.jsp">Mapa</a>
-                        </li>
-                    </ul>
-                </div>
-
-            </div> 
-        </nav>
+        <div id="map"></div>
         
-        <div id="map" style="width: 1500px; height: 1000px"></div>
-
         <script>
             var marker;
             var map;
@@ -79,12 +40,20 @@
                     center: new google.maps.LatLng(10, -444),
                     zoom: 9,
                     mapTypeId: google.maps.MapTypeId.HYBRID,
-                    mapTypeControl: false,
+                    mapTypeControl: true,
+                    mapTypeControlOptions: {
+                        style: google.maps.MapTypeControlStyle.DROPDOWN_MENU, mapTypeIds: [
+                            google.maps.MapTypeId.HYBRID,
+                            google.maps.MapTypeId.ROADMAP,
+                            google.maps.MapTypeId.TERRAIN
+                        ]
+                    },
                     zoomControl: true,
                     zoomControlOptions: {
                         style: google.maps.ZoomControlStyle.SMALL
                     }
-                });
+                }
+                );
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(function (position) {
                         var pos = {
@@ -156,7 +125,7 @@
             function doNothing() {}
 
         </script>
-
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAn4rYPSF3MO72qt5FB6s3zD5EC8HV0LcI&amp;callback=initMap"></script>
+        
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWBPllGbHswpDqgnvXVX2QThNLHWQLmTo&amp;callback=initMap"></script>
     </body>
 </html>

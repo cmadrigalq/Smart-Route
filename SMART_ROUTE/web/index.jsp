@@ -63,8 +63,10 @@
                             <a  href="tarifas.jsp">Tarifas</a>
                         </li>
                         <li>
-                            <a  href="mapa.jsp">Mapa</a>
-                        </li>
+                            <a  href="paradas.jsp">Paradas</a>
+
+                        </li>                   
+
                     </ul>
                 </div>
 

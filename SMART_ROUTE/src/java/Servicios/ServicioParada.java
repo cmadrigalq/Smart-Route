@@ -1,7 +1,6 @@
 package Servicios;
 
 import entidades.Parada;
-import entidades.Posicion;
 import java.util.List;
 
 /**
@@ -13,6 +12,10 @@ import java.util.List;
  */
 public class ServicioParada extends ServicioBase {
 
+    public ServicioParada(){
+        super();
+    }
+    
     public List<Parada> findAll() {
         try {
             return em.createNamedQuery("Parada.findAll", Parada.class)

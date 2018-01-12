@@ -12,6 +12,10 @@ import java.util.List;
  */
 public class ServicioTarifa extends ServicioBase{
     
+    public ServicioTarifa(){
+        super();
+    }
+    
     public List<Tarifa> findAll() {
         try {
             return em.createNamedQuery("Tarifa.findAll", Tarifa.class)

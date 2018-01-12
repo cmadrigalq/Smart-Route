@@ -355,12 +355,16 @@ input[type="radio"]:checked ~ label {
     background: #0B610B;
 }
 
-.table a:hover, table tr:first-child{
+.table a:hover, table tr:nth-child{
     color:white;
     text-decoration: none;
 }
 tr:hover td{
-    color:black;
+    color:white;
+}
+
+thead:hover{
+    color:white;
 }
 
 #divPrecioTotal{
@@ -371,6 +375,13 @@ tr:hover td{
     text-decoration: none;
 }
 
+th, th{
+    color:white;
+}
+
+.blanco{
+    color:white;
+}
 
 #imagenpeli {
     width: 30%;

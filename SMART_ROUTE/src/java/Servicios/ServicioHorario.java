@@ -12,6 +12,10 @@ import java.util.List;
  */
 public class ServicioHorario extends ServicioBase{
     
+    public ServicioHorario(){
+        super();
+    }
+    
     public List<Horario> findAll() {
         try {
             return em.createNamedQuery("Horario.findAll", Horario.class)

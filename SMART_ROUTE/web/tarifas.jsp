@@ -50,7 +50,7 @@
                             <a  href="tarifas.jsp">Tarifas</a>
                         </li>
                         <li>
-                            <a  href="mapa.jsp">Mapa</a>
+                            <a  href="paradas.jsp">Paradas</a>
                         </li>
                     </ul>
                 </div>
@@ -87,7 +87,7 @@
                                     List<Tarifa> tarifas = servicio.findAll();
                                     for (Tarifa t : tarifas) {
                                         out.println(
-                                                String.format("<tr><td>%d</td> <td>%d</td> <td>%s</td><tr>",
+                                                String.format("<tr><td class='blanco'>%d</td> <td class='blanco'>%d</td> <td class='blanco'>%s</td><tr>",
                                                         t.getIdTarifa(), t.getTarifa(), t.getInicio()
                                                 )
                                         );
