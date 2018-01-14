@@ -2,98 +2,92 @@ package entidades;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * Horario:
  *
  * @version 1.0.0  
  * @author Cynthia Madrigal Quesada
- * @date 06/01/2018
+ * @date 14/01/2018
  */
 @Entity
 @Table(name = "horario")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Horario.findAll", query = "SELECT h FROM Horario h")
-    , @NamedQuery(name = "Horario.findByIdHorario", query = "SELECT h FROM Horario h WHERE h.idHorario = :idHorario")
-    , @NamedQuery(name = "Horario.findByHoraSalida", query = "SELECT h FROM Horario h WHERE h.horaSalida = :horaSalida")
-    , @NamedQuery(name = "Horario.findByHoraLlegad", query = "SELECT h FROM Horario h WHERE h.horaLlegad = :horaLlegad")})
+    , @NamedQuery(name = "Horario.findByHora", query = "SELECT h FROM Horario h WHERE h.hora = :hora")
+    , @NamedQuery(name = "Horario.findById", query = "SELECT h FROM Horario h WHERE h.id = :id")})
 public class Horario implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    @Basic(optional = false)
+    @Column(name = "Hora")
+    @Temporal(TemporalType.TIME)
+    private Date hora;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "ID_HORARIO")
-    private Integer idHorario;
-    @Column(name = "HORA_SALIDA")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date horaSalida;
-    @Column(name = "HORA_LLEGAD")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date horaLlegad;
-    @OneToMany(mappedBy = "horario")
-    private List<Viaje> viajeList;
+    @Column(name = "id")
+    private Long id;
+    @JoinColumn(name = "Bus", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Bus bus;
 
     public Horario() {
     }
 
-    public Horario(Integer idHorario) {
-        this.idHorario = idHorario;
+    public Horario(Long id) {
+        this.id = id;
     }
 
-    public Integer getIdHorario() {
-        return idHorario;
+    public Horario(Long id, Date hora) {
+        this.id = id;
+        this.hora = hora;
     }
 
-    public void setIdHorario(Integer idHorario) {
-        this.idHorario = idHorario;
+    public Date getHora() {
+        return hora;
     }
 
-    public Date getHoraSalida() {
-        return horaSalida;
+    public void setHora(Date hora) {
+        this.hora = hora;
     }
 
-    public void setHoraSalida(Date horaSalida) {
-        this.horaSalida = horaSalida;
+    public Long getId() {
+        return id;
     }
 
-    public Date getHoraLlegad() {
-        return horaLlegad;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setHoraLlegad(Date horaLlegad) {
-        this.horaLlegad = horaLlegad;
+    public Bus getBus() {
+        return bus;
     }
 
-    @XmlTransient
-    public List<Viaje> getViajeList() {
-        return viajeList;
-    }
-
-    public void setViajeList(List<Viaje> viajeList) {
-        this.viajeList = viajeList;
+    public void setBus(Bus bus) {
+        this.bus = bus;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idHorario != null ? idHorario.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -104,7 +98,7 @@ public class Horario implements Serializable {
             return false;
         }
         Horario other = (Horario) object;
-        if ((this.idHorario == null && other.idHorario != null) || (this.idHorario != null && !this.idHorario.equals(other.idHorario))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -112,7 +106,7 @@ public class Horario implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Horario[ idHorario=" + idHorario + " ]";
+        return "entidades.Horario[ id=" + id + " ]";
     }
 
 }

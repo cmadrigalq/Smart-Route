@@ -3,13 +3,11 @@
   <persistence-unit name="SMART_ROUTEPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>entidades.Bus</class>
+    <class>entidades.Empresa</class>
     <class>entidades.Horario</class>
     <class>entidades.Parada</class>
-    <class>entidades.Paradamedia</class>
-    <class>entidades.Posicion</class>
+    <class>entidades.Punto</class>
     <class>entidades.Ruta</class>
-    <class>entidades.Tarifa</class>
-    <class>entidades.Viaje</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/SMART_ROUTES?zeroDateTimeBehavior=convertToNull"/>

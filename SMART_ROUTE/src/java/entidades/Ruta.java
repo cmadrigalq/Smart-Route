@@ -3,10 +3,10 @@ package entidades;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -22,64 +22,85 @@ import javax.xml.bind.annotation.XmlTransient;
  *
  * @version 1.0.0  
  * @author Cynthia Madrigal Quesada
- * @date 06/01/2018
+ * @date 14/01/2018
  */
 @Entity
 @Table(name = "ruta")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Ruta.findAll", query = "SELECT r FROM Ruta r")
-    , @NamedQuery(name = "Ruta.findByIdRuta", query = "SELECT r FROM Ruta r WHERE r.idRuta = :idRuta")})
+    , @NamedQuery(name = "Ruta.findByNombre", query = "SELECT r FROM Ruta r WHERE r.nombre = :nombre")})
 public class Ruta implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "ID_RUTA")
-    private Integer idRuta;
-    @JoinColumn(name = "TARIFA", referencedColumnName = "ID_TARIFA")
-    @ManyToOne
-    private Tarifa tarifa;
-    @OneToMany(mappedBy = "ruta")
-    private List<Viaje> viajeList;
+    @Column(name = "nombre")
+    private String nombre;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ruta1", fetch = FetchType.LAZY)
+    private List<Bus> busList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ruta2", fetch = FetchType.LAZY)
+    private List<Bus> busList1;
+    @JoinColumn(name = "primeraParada", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Parada primeraParada;
+    @JoinColumn(name = "ultimaParada", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Parada ultimaParada;
 
     public Ruta() {
     }
 
-    public Ruta(Integer idRuta) {
-        this.idRuta = idRuta;
+    public Ruta(String nombre) {
+        this.nombre = nombre;
     }
 
-    public Integer getIdRuta() {
-        return idRuta;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setIdRuta(Integer idRuta) {
-        this.idRuta = idRuta;
-    }
-
-    public Tarifa getTarifa() {
-        return tarifa;
-    }
-
-    public void setTarifa(Tarifa tarifa) {
-        this.tarifa = tarifa;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     @XmlTransient
-    public List<Viaje> getViajeList() {
-        return viajeList;
+    public List<Bus> getBusList() {
+        return busList;
     }
 
-    public void setViajeList(List<Viaje> viajeList) {
-        this.viajeList = viajeList;
+    public void setBusList(List<Bus> busList) {
+        this.busList = busList;
+    }
+
+    @XmlTransient
+    public List<Bus> getBusList1() {
+        return busList1;
+    }
+
+    public void setBusList1(List<Bus> busList1) {
+        this.busList1 = busList1;
+    }
+
+    public Parada getPrimeraParada() {
+        return primeraParada;
+    }
+
+    public void setPrimeraParada(Parada primeraParada) {
+        this.primeraParada = primeraParada;
+    }
+
+    public Parada getUltimaParada() {
+        return ultimaParada;
+    }
+
+    public void setUltimaParada(Parada ultimaParada) {
+        this.ultimaParada = ultimaParada;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idRuta != null ? idRuta.hashCode() : 0);
+        hash += (nombre != null ? nombre.hashCode() : 0);
         return hash;
     }
 
@@ -90,7 +111,7 @@ public class Ruta implements Serializable {
             return false;
         }
         Ruta other = (Ruta) object;
-        if ((this.idRuta == null && other.idRuta != null) || (this.idRuta != null && !this.idRuta.equals(other.idRuta))) {
+        if ((this.nombre == null && other.nombre != null) || (this.nombre != null && !this.nombre.equals(other.nombre))) {
             return false;
         }
         return true;
@@ -98,7 +119,7 @@ public class Ruta implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Ruta[ idRuta=" + idRuta + " ]";
+        return "entidades.Ruta[ nombre=" + nombre + " ]";
     }
 
 }
