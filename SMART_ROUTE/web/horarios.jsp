@@ -1,7 +1,3 @@
-<%@page import="Utilitarios.DateUtil"%>
-<%@page import="entidades.Horario"%>
-<%@page import="java.util.List"%>
-<%@page import="Servicios.ServicioHorario"%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -82,7 +78,7 @@
                                 </thead>
                                 <tbody>
                                     <%
-                                        /*EJEMPLO!!!!!!! (COMENTAR!)**/
+                                        /*EJEMPLO!!!!!!! (COMENTAR!)**
                                         ServicioHorario servicio = new ServicioHorario();
                                         try {
                                             List<Horario> horarios = servicio.findAll();

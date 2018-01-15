@@ -4,14 +4,7 @@
     Author     : Melissa
 --%>
 
-<%@page import="Servicios.ServicioParada"%>
-<%@page import="entidades.Parada"%>
-<%@page import="Servicios.ServicioPosicion"%>
-<%@page import="entidades.Posicion"%>
-<%@page import="java.util.List"%>
-<%@page import="entidades.Ruta"%>
-<%@page import="javax.persistence.EntityManager"%>
-<%@page import="entidades.Bus"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%> 
 <!DOCTYPE html>
 <html>
@@ -89,23 +82,10 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="form-group" >
                     <h4 class="titulo3" >ORIGEN</h4>
-                    <select data-live-search="true" class="selectpicker form-control  btn-success" d id="origen">
+                    <select data-live-search="true" class="selectpicker form-control  btn-success"  
+                            id="origenBus">
                         <option>Elija un Origen</option>
-                        <%
-                            /*EJEMPLO!!!!!!! (COMENTAR!)**/
-                            ServicioParada servicioP = new ServicioParada();
-                            try {
-                                List<Parada> parad = servicioP.findAll();
-                                for (Parada p : parad) {
-                                    out.println(
-                                            String.format("<option id='%s' onclick='changeOrigen(%f, %f)'>-%s-</option>",
-                                                    p.getPosicion(), p.getPosicion().getLatitud(), p.getPosicion().getLongitud(), p.getLugar())
-                                    );
-                                }
-                            } catch (Exception ex) {
-                                out.print("<option>" + ex.toString() + "</option>");
-                            }
-                            /*FINAL DE EJEMPLO!*/%>
+                        <%%>
                     </select>
                 </div>
             </div>
@@ -118,7 +98,7 @@
                     <select data-live-search="true" class="selectpicker form-control btn-info" id="origen">
                         <option>Elija un Destino</option>
                         <%
- /*EJEMPLO!!!!!!! (COMENTAR!)**/
+ /*EJEMPLO!!!!!!! (COMENTAR!)**
                             ServicioParada servicioP2 = new ServicioParada();
                             try {
                                 List<Parada> parad = servicioP2.findAll();

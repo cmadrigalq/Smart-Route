@@ -1,5 +1,3 @@
-<%@page import="Servicios.ServicioTarifa"%>
-<%@page import="entidades.Tarifa"%>
 <%@page import="java.util.List"%>
 <html>
     <head>
@@ -81,7 +79,7 @@
                         </thead>
                         <tbody>
                             <%
-                                /*EJEMPLO!!!!!!! (COMENTAR!)**/
+                                /*EJEMPLO!!!!!!! (COMENTAR!)**
                                 ServicioTarifa servicio = new ServicioTarifa();
                                 try {
                                     List<Tarifa> tarifas = servicio.findAll();

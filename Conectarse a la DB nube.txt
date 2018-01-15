@@ -1,0 +1,15 @@
+click derecho sobre Databases
+->Registrar MySql server
+->host name:sql9.freemysqlhosting.net
+  puerto:3306
+  usuario: sql9215703
+  password: fPjTPcMcGe
+->Ok
+->En la conexión que aparece, abrir (botón de +)
+->click derecho sobre sql9215703
+->connect
+renombrar la conexión que aperece como 
+SMART_ROUTES_HOST
+
+ya con eso se tiene acceso a la base de datos desde la nube.  
+  

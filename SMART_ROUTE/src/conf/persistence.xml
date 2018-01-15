@@ -10,10 +10,10 @@
     <class>entidades.Ruta</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/SMART_ROUTES?zeroDateTimeBehavior=convertToNull"/>
-      <property name="javax.persistence.jdbc.user" value="SMARTROUTE"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://sql9.freemysqlhosting.net:3306/sql9215703?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.user" value="sql9215703"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.password" value="$SMARTROUTE$"/>
+      <property name="javax.persistence.jdbc.password" value="fPjTPcMcGe"/>
       <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
     </properties>
   </persistence-unit>
