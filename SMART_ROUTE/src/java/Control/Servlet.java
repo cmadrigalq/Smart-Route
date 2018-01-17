@@ -7,6 +7,8 @@ package Control;
 
 import Servicios.ServicioPuntos;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
 
 import entidades.Punto;
 import java.io.IOException;
@@ -43,9 +45,11 @@ public class Servlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             response.setContentType("text/xml");
             String accion = request.getParameter("action");
+            
             List<Punto> puntos;
             String json="";
             Gson gson = new Gson();
+            
             switch (accion) {
                 case "todosLosPuntos":
                     ServicioPuntos sp = new ServicioPuntos();
