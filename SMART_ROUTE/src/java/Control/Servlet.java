@@ -6,13 +6,10 @@
 package Control;
 
 import Servicios.ServicioPuntos;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.typeadapters.RuntimeTypeAdapterFactory;
-
-import entidades.Punto;
+import Utilitarios.Json;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -45,17 +42,16 @@ public class Servlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             response.setContentType("text/xml");
             String accion = request.getParameter("action");
-            
-            List<Punto> puntos;
-            String json="";
-            Gson gson = new Gson();
-            
+
+            List<? extends Serializable> arreglo;
+            String jsonText = "";
+            Json json = new Json();
             switch (accion) {
                 case "todosLosPuntos":
                     ServicioPuntos sp = new ServicioPuntos();
-                    puntos = sp.getTodosLosPuntos();
-                    json = gson.toJson(puntos);
-                    out.write(json);
+                    arreglo = sp.getTodosLosPuntos();
+                    jsonText = json.toJson(arreglo);
+                    out.write(jsonText);
                     break;
             }
         } catch (Exception ex) {
