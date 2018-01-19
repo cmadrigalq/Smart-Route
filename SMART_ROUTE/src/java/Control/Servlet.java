@@ -5,7 +5,12 @@
  */
 package Control;
 
+import Servicios.ServicioBus;
+import Servicios.ServicioEmpresa;
+import Servicios.ServicioHorario;
+import Servicios.ServicioParada;
 import Servicios.ServicioPuntos;
+import Servicios.ServicioRuta;
 import Utilitarios.Json;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -50,6 +55,36 @@ public class Servlet extends HttpServlet {
                 case "todosLosPuntos":
                     ServicioPuntos sp = new ServicioPuntos();
                     arreglo = sp.getTodosLosPuntos();
+                    jsonText = json.toJson(arreglo);
+                    out.write(jsonText);
+                    break;
+                case "todasLasParadas":
+                    ServicioParada spa = new ServicioParada();
+                    arreglo = spa.getTodasLasParadas();
+                    jsonText = json.toJson(arreglo);
+                    out.write(jsonText);
+                    break;
+                case "todasLasRutas":
+                    ServicioRuta sru = new ServicioRuta();
+                    arreglo = sru.getTodasLasRutas();
+                    jsonText = json.toJson(arreglo);
+                    out.write(jsonText);
+                    break;
+                case "todosLosBuses":
+                    ServicioBus sbu = new ServicioBus();
+                    arreglo = sbu.getTodosLosBuses();
+                    jsonText = json.toJson(arreglo);
+                    out.write(jsonText);
+                    break;
+                case "todasLasEmpresas":
+                    ServicioEmpresa sem = new ServicioEmpresa();
+                    arreglo = sem.getTodasLasEmpresas();
+                    jsonText = json.toJson(arreglo);
+                    out.write(jsonText);
+                    break;
+                case "todosLosHorarios":
+                    ServicioHorario sho = new ServicioHorario();
+                    arreglo = sho.getTodosLosHorarios();
                     jsonText = json.toJson(arreglo);
                     out.write(jsonText);
                     break;
