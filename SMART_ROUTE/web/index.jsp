@@ -25,7 +25,6 @@
         <script src="jquery-3.0.0.min.js"></script>
         <script src="css/jquery-1.12.4.min.js" type="text/javascript"></script>
         <script src="js/Mapa.js" type="text/javascript"></script>
-        <script src="js/Proxy.js" type="text/javascript"></script>
     </head>
 
     <body class="fondo">
