@@ -6,6 +6,7 @@ var directionsService;
 var directionRenderer;
 var objConfigDR;
 var objConfigDS;
+
 function addMarker(location) {
     marker = new google.maps.Marker({
         position: location,

@@ -58,8 +58,7 @@
                         </li>
                         <li>
                             <a  href="paradas.jsp">Paradas</a>
-                        </li>                   
-
+                        </li>
                     </ul>
                 </div>
 

@@ -47,7 +47,6 @@ public class Servlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             response.setContentType("text/xml");
             String accion = request.getParameter("action");
-
             List<? extends Serializable> arreglo;
             String jsonText = "";
             Json json = new Json();
