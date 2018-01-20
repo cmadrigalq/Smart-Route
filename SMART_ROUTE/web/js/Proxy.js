@@ -89,6 +89,19 @@ const Proxy = (servidor/*nombre del servlet*/,
             empaquetador(parametros)
             );
 };
+Proxy.getParadas = function (callBack){
+    var AJAX_req = new XMLHttpRequest();
+    url = "/SMART/SMART?action=todasLasParadas";
+    AJAX_req.open("GET", url, true); 
+    AJAX_req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    AJAX_req.onreadystatechange = function(){
+        if (AJAX_req.readyState === 4 && AJAX_req.status === 200){
+            var object = JSON.parse(AJAX_req.responseText, JsonUtils.revive);
+            callBack(object);
+        }
+    };
+    AJAX_req.send();
+};
 
 
 

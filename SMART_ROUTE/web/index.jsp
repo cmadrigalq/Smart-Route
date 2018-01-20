@@ -83,7 +83,7 @@
                     <h4 class="titulo3" >ORIGEN</h4>
                     <select data-live-search="true" class="selectpicker form-control  btn-success"  
                             id="origenBus">
-                        <option>Elija un Origen</option>
+                        <option id ="origen">Elija un Origen</option>
                         <%%>
                     </select>
                 </div>
@@ -95,7 +95,7 @@
                 <div class="form-group" >
                     <h4 class="titulo3" >DESTINO</h4>
                     <select data-live-search="true" class="selectpicker form-control btn-info" id="origen">
-                        <option>Elija un Destino</option>
+                        <option id ="destino">Elija un Destino</option>
                         <%
  /*EJEMPLO!!!!!!! (COMENTAR!)**
                             ServicioParada servicioP2 = new ServicioParada();
@@ -133,5 +133,36 @@
         </div>
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIhBttn3yBK9T_SBflk1RRuoNbD_Q-QWM&amp;callback=initMap"></script>
+        
+        <script>
+            var paradas;
+            function pageLoad(event) {
+                Proxy.getParadas(function (resultado) {
+                    paradas = resultado;
+                    mostrarRutas();
+                });
+            }
+            
+            function mostrarPaises() {
+            var origen = document.getElementById("origen");
+            var destino = document.getElementById("destino");
+            var opcion = document.createElement("option");
+            origen.add(opcion);
+            opcion = document.createElement("option");
+            destino.add(opcion);
+            for (var i = 0; i < paradas.length; i++) {
+                opcion = document.createElement("option");
+                opcion.value = paradas.id;
+                opcion.textContent = paradas.id;
+                origen.add(opcion);
+                opcion = document.createElement("option");
+                opcion.value = paradas.id;
+                opcion.textContent = paradas.id;
+                destino.add(opcion);
+            }
+        }
+            
+            document.addEventListener("DOMContentLoaded", pageLoad);
+        </script>
     </body>
 </html>
