@@ -90,31 +90,6 @@ const Proxy = (servidor/*nombre del servlet*/,
             );
 };
 
-const Proxy = (servidor/*nombre del servlet*/,
-        accion,
-        metodo/*GET,POST,DELETE...*/,
-        callBack,
-        objetoEsperado,
-        ...parametros) => {
-    console.log("Action: " + accion);
-    let AJAX_req = new XMLHttpRequest();
-    let url = `${servidor}?action=${accion}`;
-    AJAX_req.open(metodo, url, true);
-    AJAX_req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    AJAX_req.onreadystatechange = function () {
-        if (AJAX_req.readyState === 4 && AJAX_req.status === 200) {
-            let jsonText = AJAX_req.responseText;
-            console.log("Respuesta: " + jsonText);
-            let objeto = toObject(jsonText, objetoEsperado);
-            callBack(objeto);
-        }
-    };
-    /**envio de los parametros*/
-    AJAX_req.send(
-            empaquetador(parametros)
-            );
-};
-
 
 
 
