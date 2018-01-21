@@ -89,6 +89,7 @@ const Proxy = (servidor/*nombre del servlet*/,
             empaquetador(parametros)
             );
 };
+
 Proxy.getParadas = function (callBack){
     var AJAX_req = new XMLHttpRequest();
     url = "/SMART/SMART?action=todasLasParadas";

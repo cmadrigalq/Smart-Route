@@ -25,6 +25,7 @@
         <script src="jquery-3.0.0.min.js"></script>
         <script src="css/jquery-1.12.4.min.js" type="text/javascript"></script>
         <script src="js/Mapa.js" type="text/javascript"></script>
+        <script src="js/Proxy.js" type="text/javascript"></script>
     </head>
 
     <body class="fondo">
@@ -82,7 +83,7 @@
                 <div class="form-group" >
                     <h4 class="titulo3" >ORIGEN</h4>
                     <select data-live-search="true" class="selectpicker form-control  btn-success"  
-                            id="origenBus">
+                            id="origenBus" >
                         <option id ="origen">Elija un Origen</option>
                         <%%>
                     </select>
@@ -135,15 +136,7 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIhBttn3yBK9T_SBflk1RRuoNbD_Q-QWM&amp;callback=initMap"></script>
         
         <script>
-            var paradas;
-            function pageLoad(event) {
-                Proxy.getParadas(function (resultado) {
-                    paradas = resultado;
-                    mostrarRutas();
-                });
-            }
-            
-            function mostrarPaises() {
+            function mostrarRutas() {
             var origen = document.getElementById("origen");
             var destino = document.getElementById("destino");
             var opcion = document.createElement("option");
@@ -161,8 +154,33 @@
                 destino.add(opcion);
             }
         }
+            Proxy("SMART",
+                  "todasLasParadas",
+                  "GET",
+                  (res)=>{
+                      if(res === null || res === undefined
+                              || !Array.isArray(res)){
+                          alert("Fail!");
+                              }
+                              else{
+                                res.forEach(e=>addPunto(e));
+                              }
+                  },
+                  "Parada");
+            /*
+            var paradas;
+            function pageLoad(event) {
+                Proxy.getParadas(function (resultado) {
+                    paradas = resultado;
+                    mostrarRutas();
+                });
+            }
+            */
             
-            document.addEventListener("DOMContentLoaded", pageLoad);
+            
+            
+           // document.addEventListener("DOMContentLoaded", pageLoad);
+            
         </script>
     </body>
 </html>
