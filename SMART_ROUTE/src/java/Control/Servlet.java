@@ -12,6 +12,7 @@ import Servicios.ServicioParada;
 import Servicios.ServicioPuntos;
 import Servicios.ServicioRuta;
 import Utilitarios.Json;
+import entidades.Punto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Serializable;
@@ -48,11 +49,12 @@ public class Servlet extends HttpServlet {
             response.setContentType("text/xml");
             String accion = request.getParameter("action");
             List<? extends Serializable> arreglo;
-            String jsonText = "";
+            String jsonText = "",aux;
             Json json = new Json();
+            ServicioPuntos sp;
             switch (accion) {
                 case "todosLosPuntos":
-                    ServicioPuntos sp = new ServicioPuntos();
+                    sp = new ServicioPuntos();
                     arreglo = sp.getTodosLosPuntos();
                     jsonText = json.toJson(arreglo);
                     out.write(jsonText);
@@ -85,6 +87,14 @@ public class Servlet extends HttpServlet {
                     ServicioHorario sho = new ServicioHorario();
                     arreglo = sho.getTodosLosHorarios();
                     jsonText = json.toJson(arreglo);
+                    out.write(jsonText);
+                    break;
+                case "buscarPunto":
+                    sp = new ServicioPuntos();
+                    aux = request.getParameter("arg0").replaceAll("\"","");
+                    Long id = Long.valueOf(aux);
+                    Punto pt = sp.getPuntoById(id);
+                    jsonText = json.toJson(pt);
                     out.write(jsonText);
                     break;
             }

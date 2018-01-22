@@ -13,13 +13,17 @@ import javax.persistence.Persistence;
  */
 public class ServicioBase {
     
-    private   EntityManagerFactory ef;
     protected EntityManager em;
-    protected ServicioBase(){
-        ef = Persistence.createEntityManagerFactory(
+    static final private   EntityManagerFactory EF;
+    static final private EntityManager EM;
+    static{
+        EF = Persistence.createEntityManagerFactory(
                 "SMART_ROUTEPU"
         );
-        em = ef.createEntityManager();
+        EM = EF.createEntityManager();
+    }
+    protected ServicioBase(){
+        em = ServicioBase.EM;
     }
     
 }

@@ -15,17 +15,7 @@
     <body>
         <%@ include file="mapa.jsp" %>
         <script>
-            Proxy("SMART",
-                  "todosLosPuntos",
-                  "GET",
-                  (res)=>{
-                    if(res === null || res === undefined || !Array.isArray(res)){
-                      alert("ups!");    
-                    }else{
-                        res.forEach(e=>addPunto(e));
-                    }
-                  },
-                  "Punto");
+            Punto.marcarTodos();
         </script>
     </body>
 </html>

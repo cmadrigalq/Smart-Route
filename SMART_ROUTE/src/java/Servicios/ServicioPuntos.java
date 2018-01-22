@@ -1,10 +1,7 @@
 package Servicios;
 
-import com.google.gson.Gson;
 import entidades.Punto;
-import java.io.PrintWriter;
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * ServicioPuntos:
@@ -19,12 +16,37 @@ public class ServicioPuntos extends ServicioBase {
         super();
     }
 
+    public Punto getPuntoById(Long id) throws Exception {
+        try {
+            return em.createNamedQuery("Punto.findById", Punto.class)
+                    .setParameter("id", id)
+                    .getSingleResult();
+        } catch (Exception ex) {
+            throw ex;
+        }
+    }
 
+    
     public  List<Punto>getTodosLosPuntos()throws Exception{
         try{
             return  em.createNamedQuery("Punto.findAll", Punto.class)
                     .getResultList();
             
+        }catch(Exception ex){
+            throw ex;
+        }
+    }
+    public String listadoDeDescripciones()throws Exception{
+        try{
+            String sql = "SELECT "
+                    + "GROUP_CONCAT('<option value=\"', "
+                    + "        p.id, "
+                    + "        '\">', "
+                    + "        p.descripcion, "
+                    + "        '</option>' SEPARATOR '\\n') "
+                    + "FROM punto p "
+                    + "order by p.descripcion";
+            return (String)em.createNativeQuery(sql).getSingleResult();
         }catch(Exception ex){
             throw ex;
         }

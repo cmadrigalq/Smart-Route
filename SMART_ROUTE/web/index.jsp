@@ -5,6 +5,9 @@
 --%>
 
 
+<%@page import="entidades.Punto"%>
+<%@page import="java.util.List"%>
+<%@page import="Servicios.ServicioPuntos"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%> 
 <!DOCTYPE html>
 <html>
@@ -26,6 +29,9 @@
         <script src="css/jquery-1.12.4.min.js" type="text/javascript"></script>
         <script src="js/Mapa.js" type="text/javascript"></script>
         <script src="js/Proxy.js" type="text/javascript"></script>
+        <script src="js/Punto.js" type="text/javascript"></script>
+        <script src="js/Utilitario.js" type="text/javascript"></script>
+        <script src="js/index_eventos.js" type="text/javascript"></script>
     </head>
 
     <body class="fondo">
@@ -82,10 +88,22 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="form-group" >
                     <h4 class="titulo3" >ORIGEN</h4>
+                    <input placeHolder="Filtro" id="filtroOrigen" class="selectpicker form-control " />
                     <select data-live-search="true" class="selectpicker form-control  btn-success"  
                             id="origenBus" >
-                        <option id ="origen">Elija un Origen</option>
-                        <%%>
+                        <option id ="origen" value="0">Elija un Origen</option>
+                        <%
+                            try {
+                                ServicioPuntos sp = new ServicioPuntos();
+                                String opciones = sp.listadoDeDescripciones();
+                                out.print(opciones);
+                                sp = null;
+                            } catch (Exception ex) {
+                                out.println(
+                                  "<option>"+ex.toString()+"</option>"
+                                );
+                            }
+                        %>
                     </select>
                 </div>
             </div>
@@ -95,23 +113,23 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="form-group" >
                     <h4 class="titulo3" >DESTINO</h4>
-                    <select data-live-search="true" class="selectpicker form-control btn-info" id="origen">
-                        <option id ="destino">Elija un Destino</option>
+                    <input placeHolder="Filtro" id="filtroDestino" class="selectpicker form-control " />
+                    <select data-live-search="true" 
+                            class="selectpicker form-control btn-info" 
+                            id="destinoBus">
+                        <option id ="destino" value="0">Elija un Destino</option>
                         <%
- /*EJEMPLO!!!!!!! (COMENTAR!)**
-                            ServicioParada servicioP2 = new ServicioParada();
                             try {
-                                List<Parada> parad = servicioP2.findAll();
-                                for (Parada p2 : parad) {
-                                    out.println(
-                                            String.format("<option id='%s' onclick='changeDestino(%f, %f)'>-%s-</option>",
-                                                    p2.getPosicion(), p2.getPosicion().getLatitud(), p2.getPosicion().getLongitud(), p2.getLugar())
-                                    );
-                                }
+                                ServicioPuntos sp2 = new ServicioPuntos();
+                                String opciones2 = sp2.listadoDeDescripciones();
+                                out.print(opciones2);
+                                sp2 = null;
                             } catch (Exception ex) {
-                                out.print("<option>" + ex.toString() + "</option>");
+                                out.println(
+                                  "<option>"+ex.toString()+"</option>"
+                                );
                             }
-                            /*FINAL DE EJEMPLO!*/%>
+                        %>
                     </select>
                 </div>
             </div>
@@ -134,53 +152,53 @@
         </div>
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIhBttn3yBK9T_SBflk1RRuoNbD_Q-QWM&amp;callback=initMap"></script>
-        
-        <script>
-            function mostrarRutas() {
-            var origen = document.getElementById("origen");
-            var destino = document.getElementById("destino");
-            var opcion = document.createElement("option");
-            origen.add(opcion);
-            opcion = document.createElement("option");
-            destino.add(opcion);
-            for (var i = 0; i < paradas.length; i++) {
-                opcion = document.createElement("option");
-                opcion.value = paradas.id;
-                opcion.textContent = paradas.id;
+
+            <!--<script>
+                function mostrarRutas() {
+                var origen = document.getElementById("origen");
+                var destino = document.getElementById("destino");
+                var opcion = document.createElement("option");
                 origen.add(opcion);
                 opcion = document.createElement("option");
-                opcion.value = paradas.id;
-                opcion.textContent = paradas.id;
                 destino.add(opcion);
+                for (var i = 0; i < paradas.length; i++) {
+                    opcion = document.createElement("option");
+                    opcion.value = paradas.id;
+                    opcion.textContent = paradas.id;
+                    origen.add(opcion);
+                    opcion = document.createElement("option");
+                    opcion.value = paradas.id;
+                    opcion.textContent = paradas.id;
+                    destino.add(opcion);
+                }
             }
-        }
-            Proxy("SMART",
-                  "todasLasParadas",
-                  "GET",
-                  (res)=>{
-                      if(res === null || res === undefined
-                              || !Array.isArray(res)){
-                          alert("Fail!");
-                              }
-                              else{
-                                res.forEach(e=>addPunto(e));
-                              }
-                  },
-                  "Parada");
-            /*
-            var paradas;
-            function pageLoad(event) {
-                Proxy.getParadas(function (resultado) {
-                    paradas = resultado;
-                    mostrarRutas();
-                });
-            }
-            */
-            
-            
-            
-           // document.addEventListener("DOMContentLoaded", pageLoad);
-            
-        </script>
+                Proxy("SMART",
+                      "todasLasParadas",
+                      "GET",
+                      (res)=>{
+                          if(res === null || res === undefined
+                                  || !Array.isArray(res)){
+                              alert("Fail!");
+                                  }
+                                  else{
+                                    res.forEach(e=>addPunto(e));
+                                  }
+                      },
+                      "Parada");
+                /*
+                var paradas;
+                function pageLoad(event) {
+                    Proxy.getParadas(function (resultado) {
+                        paradas = resultado;
+                        mostrarRutas();
+                    });
+                }
+                */
+
+
+
+               // document.addEventListener("DOMContentLoaded", pageLoad);
+
+            </script> -->
     </body>
 </html>

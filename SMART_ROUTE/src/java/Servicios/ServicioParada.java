@@ -5,11 +5,8 @@
  */
 package Servicios;
 
-import com.google.gson.Gson;
 import entidades.Parada;
-import java.io.PrintWriter;
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  *

@@ -1,5 +1,6 @@
 let map;
-let puntos = [];
+let marcaOrigen;
+let marcaDestino;
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: -34.397, lng: 150.644},
@@ -34,14 +35,6 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
             'Error: Your browser doesn\'t support geolocation.');
 }
 
-const addPunto = (punto,mensaje) => {
-    if(mensaje === undefined){
-        mensaje = "ESTE ES EL PUNTO: " + punto.id;
-    }
-    let nuevaMarca = new google.maps.Marker({
-        position: {lat: punto.latitud, lng: punto.longitud},
-        map: map,
-        title: mensaje
-    });
-    puntos.push(nuevaMarca);
-};
+
+
+

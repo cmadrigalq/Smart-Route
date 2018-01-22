@@ -1,34 +1,30 @@
 package entidades;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * Punto:
  *
  * @version 1.0.0  
  * @author Cynthia Madrigal Quesada
- * @date 14/01/2018
+ * @date 21/01/2018
  */
 @Entity
 @Table(name = "punto")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Punto.findAll", query = "SELECT p FROM Punto p")
+    @NamedQuery(name = "Punto.findAll", query = "SELECT p FROM Punto p order by p.descripcion")
     , @NamedQuery(name = "Punto.findById", query = "SELECT p FROM Punto p WHERE p.id = :id")
     , @NamedQuery(name = "Punto.findByLatitud", query = "SELECT p FROM Punto p WHERE p.latitud = :latitud")
     , @NamedQuery(name = "Punto.findByLongitud", query = "SELECT p FROM Punto p WHERE p.longitud = :longitud")})
@@ -46,8 +42,10 @@ public class Punto implements Serializable {
     @Basic(optional = false)
     @Column(name = "longitud")
     private double longitud;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "puntoGeografico", fetch = FetchType.LAZY)
-    private List<Parada> paradaList;
+    @Basic(optional = false)
+    @Lob
+    @Column(name = "descripcion")
+    private String descripcion;
 
     public Punto() {
     }
@@ -56,10 +54,11 @@ public class Punto implements Serializable {
         this.id = id;
     }
 
-    public Punto(Long id, double latitud, double longitud) {
+    public Punto(Long id, double latitud, double longitud, String descripcion) {
         this.id = id;
         this.latitud = latitud;
         this.longitud = longitud;
+        this.descripcion = descripcion;
     }
 
     public Long getId() {
@@ -86,13 +85,12 @@ public class Punto implements Serializable {
         this.longitud = longitud;
     }
 
-    @XmlTransient
-    public List<Parada> getParadaList() {
-        return paradaList;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setParadaList(List<Parada> paradaList) {
-        this.paradaList = paradaList;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     @Override
