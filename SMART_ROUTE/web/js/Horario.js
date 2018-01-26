@@ -17,6 +17,10 @@ class Horario {
             if (res === null || res === undefined || !Array.isArray(res)) {
                 alert(res);
             } else {
+                res = res.map(e=>{
+                    e.hora = new Date(e.hora)
+                    return e;
+                });
                 let tabla = new Table(
                         div, headers, res, atributos
                         );

@@ -13,7 +13,7 @@
         <title>SmartRoute</title>
 
         <!-- CSS -->
-
+        <link rel="stylesheet" type="text/css" href="css/Table.css"/>
         <link rel="stylesheet" type="text/css" href="css/estilos.css"/>
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
@@ -24,6 +24,7 @@
         <script src="jquery-3.0.0.min.js"></script>
         <script src="css/jquery-1.12.4.min.js" type="text/javascript"></script>
         <script src="js/Horario.js" type="text/javascript"></script>
+        <script src="js/genTable.js" type="text/javascript"></script>
         <script src="js/Proxy.js" type="text/javascript"></script>
         <script src="js/Utilitario.js" type="text/javascript"></script>
         <script src="js/horarios_eventos.js" type="text/javascript"></script>

@@ -33,6 +33,9 @@ class Table{
     Cell(value,idx = 0, hdr) {
         value = value === "" ? "-" : value;
         let cell = document.createElement(hdr ? "th" : "td");
+        if(value instanceof Date){
+            value = dateToText(value);
+        }
         if (typeof value === "object") {
             cell.appendChild(value);
         } else

@@ -19,3 +19,22 @@ const ocultarPorFiltro = (opciones, criterio) => {
                     }
             );
 };
+
+const dateToText=(date,pattern = "`${hh}:${mm} ${apm}`")=>{
+    if(!(date instanceof Date))
+        return dateToText(new Date());
+    let hh = date.getHours();
+    let apm;
+    if(hh >= 12){
+        apm = "pm";
+    }else apm = "am";
+    hh %= 13;
+    if(hh < 10){
+        hh = '0'+hh;
+    }
+    let mm = date.getMinutes();
+    if(mm < 10){
+        mm = '0'+mm;
+    }
+    return eval(pattern);
+};  
