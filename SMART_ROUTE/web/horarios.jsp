@@ -27,6 +27,7 @@
         <script src="js/Proxy.js" type="text/javascript"></script>
         <script src="js/Utilitario.js" type="text/javascript"></script>
         <script src="js/horarios_eventos.js" type="text/javascript"></script>
+        <script src="js/genTable.js" type="text/javascript"></script>
     </head>
 
     <body class="fondo">
