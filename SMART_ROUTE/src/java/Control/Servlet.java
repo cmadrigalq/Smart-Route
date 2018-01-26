@@ -49,9 +49,11 @@ public class Servlet extends HttpServlet {
             response.setContentType("text/xml");
             String accion = request.getParameter("action");
             List<? extends Serializable> arreglo;
-            String jsonText = "",aux;
+            String jsonText = "",aux,aux2;
             Json json = new Json();
             ServicioPuntos sp;
+            ServicioHorario sh;
+            Long id;
             switch (accion) {
                 case "todosLosPuntos":
                     sp = new ServicioPuntos();
@@ -92,9 +94,18 @@ public class Servlet extends HttpServlet {
                 case "buscarPunto":
                     sp = new ServicioPuntos();
                     aux = request.getParameter("arg0").replaceAll("\"","");
-                    Long id = Long.valueOf(aux);
+                    id = Long.valueOf(aux);
                     Punto pt = sp.getPuntoById(id);
                     jsonText = json.toJson(pt);
+                    out.write(jsonText);
+                    break;
+                case "buscarPorRuta":
+                    aux = request.getParameter("arg0").replaceAll("\"","");
+                    aux2 = request.getParameter("arg1").replaceAll("\"","");
+                    id = Long.valueOf(aux);
+                    sh = new ServicioHorario();
+                    arreglo = sh.getByBusYRuta(id, aux2);
+                    jsonText = json.toJson(arreglo);
                     out.write(jsonText);
                     break;
             }

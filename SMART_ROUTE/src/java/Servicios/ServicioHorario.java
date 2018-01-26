@@ -6,6 +6,7 @@
 package Servicios;
 
 import entidades.Horario;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -24,6 +25,19 @@ public class ServicioHorario extends ServicioBase {
             return  em.createNamedQuery("Horario.findAll", Horario.class)
                     .getResultList();
             
+        }catch(Exception ex){
+            throw ex;
+        }
+    }
+    public  List<Date>getByBusYRuta(Long bus,String ruta)throws Exception{
+        try{
+            String sql = "SELECT * FROM horario h "
+                    + "WHERE h.isRuta1 = :isRuta1 "
+                    + "and h.Bus = :bus";
+            return  em.createNativeQuery(sql)
+                    .setParameter("isRuta1",ruta.trim().equals("1"))
+                    .setParameter("bus",bus)
+                    .getResultList();
         }catch(Exception ex){
             throw ex;
         }

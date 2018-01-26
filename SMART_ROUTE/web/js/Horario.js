@@ -3,12 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-class Horario{
-    constructor(id,hora,bus){
-        this.id=id;
-        this.hora=hora;
-        this.bus=bus;
+class Horario {
+    constructor(id, hora, bus) {
+        this.id = id;
+        this.hora = hora;
+        this.bus = bus;
     }
-   
+    static buscarPorRuta(div, headers, atributos, bus, numDeRuta) {
+        Proxy("SMART",
+                "buscarPorRuta",
+                "POST",
+                (res) => {
+            if (res === null || res === undefined || !Array.isArray(res)) {
+                alert(res);
+            } else {
+                let tabla = new Table(
+                        div, headers, res, atributos
+                        );
+                tabla.createTable();
+            }
+        }, bus, numDeRuta);
+    }
+
 }
 

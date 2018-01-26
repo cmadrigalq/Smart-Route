@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  *
  * @version 1.0.0  
  * @author Cynthia Madrigal Quesada
- * @date 14/01/2018
+ * @date 26/01/2018
  */
 @Entity
 @Table(name = "horario")
@@ -31,7 +31,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Horario.findAll", query = "SELECT h FROM Horario h")
     , @NamedQuery(name = "Horario.findByHora", query = "SELECT h FROM Horario h WHERE h.hora = :hora")
-    , @NamedQuery(name = "Horario.findById", query = "SELECT h FROM Horario h WHERE h.id = :id")})
+    , @NamedQuery(name = "Horario.findById", query = "SELECT h FROM Horario h WHERE h.id = :id")
+    , @NamedQuery(name = "Horario.findByIsRuta1", query = "SELECT h FROM Horario h WHERE h.isRuta1 = :isRuta1")})
 public class Horario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,6 +45,9 @@ public class Horario implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
+    @Basic(optional = false)
+    @Column(name = "isRuta1")
+    private boolean isRuta1;
     @JoinColumn(name = "Bus", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Bus bus;
@@ -55,9 +59,10 @@ public class Horario implements Serializable {
         this.id = id;
     }
 
-    public Horario(Long id, Date hora) {
+    public Horario(Long id, Date hora, boolean isRuta1) {
         this.id = id;
         this.hora = hora;
+        this.isRuta1 = isRuta1;
     }
 
     public Date getHora() {
@@ -74,6 +79,14 @@ public class Horario implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public boolean getIsRuta1() {
+        return isRuta1;
+    }
+
+    public void setIsRuta1(boolean isRuta1) {
+        this.isRuta1 = isRuta1;
     }
 
     public Bus getBus() {

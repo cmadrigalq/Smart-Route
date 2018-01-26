@@ -1,3 +1,4 @@
+<%@page import="Servicios.ServicioRuta"%>
 <%@page import="Servicios.ServicioBus"%>
 <%@page import="Servicios.ServicioEmpresa"%>
 <%@page import="Utilitarios.DateUtil"%>
@@ -10,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>SmartRoute</title>
-        
+
         <!-- CSS -->
 
         <link rel="stylesheet" type="text/css" href="css/estilos.css"/>
@@ -23,6 +24,9 @@
         <script src="jquery-3.0.0.min.js"></script>
         <script src="css/jquery-1.12.4.min.js" type="text/javascript"></script>
         <script src="js/Horario.js" type="text/javascript"></script>
+        <script src="js/Proxy.js" type="text/javascript"></script>
+        <script src="js/Utilitario.js" type="text/javascript"></script>
+        <script src="js/horarios_eventos.js" type="text/javascript"></script>
     </head>
 
     <body class="fondo">
@@ -61,103 +65,69 @@
 
                     </ul>
                 </div>
-
-                <!-- top de la pagina-->  
-                <header class="intro">
-                    <div class="container">
-                        <div class="col-md-8 col-md-offset-2">
-                            <img src="imagenes/logo1.png"/>
-                            <HR width=100% align="center">
-                            <h1 class="titulo" >Aplicación de rutas inteligentes</h1>
-                        </div>
-                    </div>
-                </header> 
-
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <div class="form-group" >
-                            <table border="1" style=" width: 100%">
-                                <thead>
-                                    <tr>
-                                        <th>ID Horario</th>
-                                        <th>Llegada</th>
-                                        <th>Salida</th>
-                                    </tr>
-                                </thead>
-                                 <div class="row">
-                                       </table>
-
-                        </div>
-                    </div>
-                             </div>
-            <div class="col-md-8 col-md-offset-2">
-                <div class="form-group" >
-                    <h4 class="titulo3" >Empresa</h4>
-                    <input placeHolder="Filtro" id="filtroOrigen" class="selectpicker form-control " />
-                    <select data-live-search="true" class="selectpicker form-control  btn-success"  
-                            id="origenBus" >
-                        <option id ="origen" value="0">Elija un Origen</option>
-                        <%
-                            try {
-                                ServicioBus sb = new ServicioBus();
-                                String opciones = sb.listadoDeNombresEmpresas();
-                                out.print(opciones);
-                                sb = null;
-                            } catch (Exception ex) {
-                                out.println(
-                                  "<option>"+ex.toString()+"</option>"
-                                );
-                            }
-                        %>
-                    </select>
-                </div>
-            </div>
-        </div>
-                    
-                    <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="form-group" >
-                    <input type="button" id="buscar" value="BUSCAR" onclick="BuscarHorario()">
-                </div>
-            </div>
-        </div>
-                    
-                    <table>
-                    
-                                <tbody>
-                                    <!--
-                                    <%
-                                        /*EJEMPLO!!!!!!! (COMENTAR!)*/
-                                      
-                                        ServicioHorario servicio = new ServicioHorario();
-                                        try {
-                                            List<Horario> horarios = servicio.getTodosLosHorarios();
-                                            for (Horario h : horarios) {
-                                                out.println(
-                                                        String.format("<tr><td class='blanco'>%d</td> <td class='blanco'>%s</td> <td class='blanco'>%s</td><tr>",
-                                                                h.getBus(),
-                                                                DateUtil.toHora(h.getHora())
-                                                        )
-                                                );
-                                            }
-                                        } catch (Exception ex) {
-                                            out.print("<td>" + ex.toString() + "</td>");
-                                        }
-                                        /*FINAL DE EJEMPLO!*/ %>
-                                    -->
-                                    
-                                </tbody>
-                            </table>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>   
         </nav>
-    </body>
-    
-    
-    
-    
+        <!-- top de la pagina-->  
+        <header class="intro">
+            <div class="container">
+                <div class="col-md-8 col-md-offset-2">
+                    <img src="imagenes/logo1.png"/>
+                    <HR width=100% align="center">
+                    <h1 class="titulo" >Aplicación de rutas inteligentes</h1>
+                </div>
+            </div>
+        </header> 
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group hidden" >
+                    <table border="1" style=" width: 100%">
+                        <thead>
+                            <tr>
+                                <th>ID Horario</th>
+                                <th>Llegada</th>
+                                <th>Salida</th>
+                            </tr>
+                        </thead>
+                        <div class="row">
+                    </table>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group" >
+                <h4 class="titulo3" >Rutas</h4>
+                <input placeHolder="Filtro" id="filtroRutas" class="selectpicker form-control " />
+                <select data-live-search="true" class="selectpicker form-control  btn-success"  
+                        id="rutasOpciones" >
+                    <option id ="rutasOpciones0" value="0">Elija la ruta deseada</option>
+                    <%
+                        try {
+                            ServicioRuta sr = new ServicioRuta();
+                            out.println(sr.getListadoRutas1());
+                            out.println(sr.getListadoRutas2());
+                            sr = null;
+                        } catch (Exception ex) {
+                            out.println(
+                                    "<option>" + ex.toString() + "</option>"
+                            );
+                        }
+                    %>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form-group" >
+                <input type="button" id="buscar" value="BUSCAR">
+            </div>
+        </div>
+    </div> 
+    <div id="tablaHorarios" class="datagrid">
+
+    </div>
+</body>
+
 </html>
