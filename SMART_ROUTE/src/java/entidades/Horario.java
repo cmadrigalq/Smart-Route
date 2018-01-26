@@ -48,9 +48,11 @@ public class Horario implements Serializable {
     @Basic(optional = false)
     @Column(name = "isRuta1")
     private boolean isRuta1;
-    @JoinColumn(name = "Bus", referencedColumnName = "id")
+    @Column(name = "bus")
+    private Long bus;
+    /*@JoinColumn(name = "Bus", referencedColumnName = "id")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private Bus bus;
+    private Bus bus;*/
 
     public Horario() {
     }
@@ -89,13 +91,22 @@ public class Horario implements Serializable {
         this.isRuta1 = isRuta1;
     }
 
-    public Bus getBus() {
+    public Long getBus() {
         return bus;
     }
 
-    public void setBus(Bus bus) {
+    public void setBus(Long bus) {
         this.bus = bus;
     }
+    
+
+//    public Bus getBus() {
+//        return bus;
+//    }
+//
+//    public void setBus(Bus bus) {
+//        this.bus = bus;
+//    }
 
     @Override
     public int hashCode() {

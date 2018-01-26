@@ -29,12 +29,12 @@ public class ServicioHorario extends ServicioBase {
             throw ex;
         }
     }
-    public  List<Date>getByBusYRuta(Long bus,String ruta)throws Exception{
+    public  List<Horario>getByBusYRuta(Long bus,String ruta)throws Exception{
         try{
             String sql = "SELECT * FROM horario h "
                     + "WHERE h.isRuta1 = :isRuta1 "
                     + "and h.Bus = :bus";
-            return  em.createNativeQuery(sql)
+            return  em.createNativeQuery(sql,Horario.class)
                     .setParameter("isRuta1",ruta.trim().equals("1"))
                     .setParameter("bus",bus)
                     .getResultList();
