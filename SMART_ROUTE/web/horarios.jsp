@@ -1,9 +1,16 @@
+<%@page import="Servicios.ServicioBus"%>
+<%@page import="Servicios.ServicioEmpresa"%>
+<%@page import="Utilitarios.DateUtil"%>
+<%@page import="entidades.Horario"%>
+<%@page import="java.util.List"%>
+<%@page import="Servicios.ServicioHorario"%>
+<%@page import="Servicios.ServicioHorario"%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>SmartRoute</title>
-
+        
         <!-- CSS -->
 
         <link rel="stylesheet" type="text/css" href="css/estilos.css"/>
@@ -15,6 +22,7 @@
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script src="jquery-3.0.0.min.js"></script>
         <script src="css/jquery-1.12.4.min.js" type="text/javascript"></script>
+        <script src="js/Horario.js" type="text/javascript"></script>
     </head>
 
     <body class="fondo">
@@ -76,25 +84,68 @@
                                         <th>Salida</th>
                                     </tr>
                                 </thead>
+                                 <div class="row">
+                                       </table>
+
+                        </div>
+                    </div>
+                             </div>
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group" >
+                    <h4 class="titulo3" >Empresa</h4>
+                    <input placeHolder="Filtro" id="filtroOrigen" class="selectpicker form-control " />
+                    <select data-live-search="true" class="selectpicker form-control  btn-success"  
+                            id="origenBus" >
+                        <option id ="origen" value="0">Elija un Origen</option>
+                        <%
+                            try {
+                                ServicioBus sb = new ServicioBus();
+                                String opciones = sb.listadoDeNombresEmpresas();
+                                out.print(opciones);
+                                sb = null;
+                            } catch (Exception ex) {
+                                out.println(
+                                  "<option>"+ex.toString()+"</option>"
+                                );
+                            }
+                        %>
+                    </select>
+                </div>
+            </div>
+        </div>
+                    
+                    <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group" >
+                    <input type="button" id="buscar" value="BUSCAR" onclick="BuscarHorario()">
+                </div>
+            </div>
+        </div>
+                    
+                    <table>
+                    
                                 <tbody>
+                                    <!--
                                     <%
-                                        /*EJEMPLO!!!!!!! (COMENTAR!)**
+                                        /*EJEMPLO!!!!!!! (COMENTAR!)*/
+                                      
                                         ServicioHorario servicio = new ServicioHorario();
                                         try {
-                                            List<Horario> horarios = servicio.findAll();
+                                            List<Horario> horarios = servicio.getTodosLosHorarios();
                                             for (Horario h : horarios) {
                                                 out.println(
                                                         String.format("<tr><td class='blanco'>%d</td> <td class='blanco'>%s</td> <td class='blanco'>%s</td><tr>",
-                                                                h.getIdHorario(),
-                                                                DateUtil.toHora(h.getHoraLlegad()),
-                                                                DateUtil.toHora(h.getHoraSalida())
+                                                                h.getBus(),
+                                                                DateUtil.toHora(h.getHora())
                                                         )
                                                 );
                                             }
                                         } catch (Exception ex) {
                                             out.print("<td>" + ex.toString() + "</td>");
                                         }
-                                        /*FINAL DE EJEMPLO!*/%>
+                                        /*FINAL DE EJEMPLO!*/ %>
+                                    -->
+                                    
                                 </tbody>
                             </table>
 
@@ -102,9 +153,11 @@
                     </div>
                 </div>
 
-
-
             </div>   
         </nav>
     </body>
+    
+    
+    
+    
 </html>

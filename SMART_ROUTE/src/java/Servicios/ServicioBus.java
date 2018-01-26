@@ -29,4 +29,20 @@ public class ServicioBus extends ServicioBase{
         }
     }
     
+   public String listadoDeNombresEmpresas()throws Exception{
+        try{
+            String sql = "SELECT "
+                    + "GROUP_CONCAT('<option value=\"', "
+                    + "        p.id, "
+                    + "        '\">', "
+                    + "        p.empresa,'-', p.ruta1, "
+                    + "        '</option>' SEPARATOR '\\n') "
+                    + "FROM bus p "
+                    + "order by p.empresa";
+            return (String)em.createNativeQuery(sql).getSingleResult();
+        }catch(Exception ex){
+            throw ex;
+        }
+    } 
+    
 }
