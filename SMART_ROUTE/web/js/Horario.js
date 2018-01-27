@@ -28,6 +28,5 @@ class Horario {
             }
         }, bus, numDeRuta);
     }
-
 }
 

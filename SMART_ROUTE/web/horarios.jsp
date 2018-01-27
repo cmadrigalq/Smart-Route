@@ -78,24 +78,6 @@
                 </div>
             </div>
         </header> 
-
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="form-group hidden" >
-                    <table border="1" style=" width: 100%">
-                        <thead>
-                            <tr>
-                                <th>ID Horario</th>
-                                <th>Llegada</th>
-                                <th>Salida</th>
-                            </tr>
-                        </thead>
-                        <div class="row">
-                    </table>
-
-                </div>
-            </div>
-        </div>
         <div class="col-md-8 col-md-offset-2">
             <div class="form-group" >
                 <h4 class="titulo3" >Rutas</h4>
@@ -126,9 +108,14 @@
                 <input type="button" id="buscar" value="BUSCAR">
             </div>
         </div>
-    </div> 
-    <div id="tablaHorarios" class="datagrid">
+    </div>
 
+    <div class="col-md-8 col-md-offset-2">
+        <div class="form-group" >
+            <div id="tablaHorarios" class="datagrid">
+
+            </div>
+        </div>
     </div>
 </body>
 

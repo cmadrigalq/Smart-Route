@@ -12,7 +12,7 @@ $(document).ready(_ => {
         let valores = ruta.split("-");
         if (ruta != 0)
             Horario.buscarPorRuta("tablaHorarios",
-                                    ["Hora de salida"],
+                                    ["Hora de salida", "Monto"],
                                     ["hora"],
                                     valores[0], valores[1]);
     });

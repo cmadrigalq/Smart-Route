@@ -33,6 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Bus.findAll", query = "SELECT b FROM Bus b")
     , @NamedQuery(name = "Bus.findById", query = "SELECT b FROM Bus b WHERE b.id = :id")
+    , @NamedQuery(name = "Bus.findByRuta", query = "SELECT b FROM Bus b WHERE b.ruta1 = :ruta or b.ruta2 = :ruta")
     , @NamedQuery(name = "Bus.findByTarifa", query = "SELECT b FROM Bus b WHERE b.tarifa = :tarifa")})
 public class Bus implements Serializable {
 

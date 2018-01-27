@@ -43,4 +43,15 @@ public class ServicioHorario extends ServicioBase {
         }
     }
     
+    public  List<Horario> getHorariosByBus(Long Bus)throws Exception{
+        try{
+            String sql = "SELECT * FROM horario h "
+                    + "WHERE h.bus = :Bus ";
+            return  em.createNativeQuery(sql,Horario.class)
+                    .setParameter("Bus",Bus)
+                    .getResultList();
+        }catch(Exception ex){
+            throw ex;
+        }
+    }
 }

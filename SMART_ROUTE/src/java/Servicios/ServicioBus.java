@@ -43,6 +43,15 @@ public class ServicioBus extends ServicioBase{
         }catch(Exception ex){
             throw ex;
         }
-    } 
-    
+    }
+   
+   public Bus getBusByRuta(String Ruta)throws Exception{
+        try{
+            return  em.createNamedQuery("Bus.findByRuta", Bus.class)
+                    .setParameter("ruta", Ruta)
+                    .getSingleResult();
+        }catch(Exception ex){
+            throw ex;
+        }
+    }     
 }
