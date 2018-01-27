@@ -1,3 +1,5 @@
+<%@page import="entidades.Bus"%>
+<%@page import="Servicios.ServicioBus"%>
 <%@page import="java.util.List"%>
 <html>
     <head>
@@ -16,6 +18,8 @@
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script src="jquery-3.0.0.min.js"></script>
         <script src="css/jquery-1.12.4.min.js" type="text/javascript"></script>
+        <script src="js/tarifas_eventos.js" type="text/javascript"></script>
+        <script src="js/genTable.js" type="text/javascript"></script>
     </head>
 
     <body class="fondo">
@@ -54,7 +58,7 @@
                 </div>
             </div> 
         </nav>
-        
+
         <!-- top de la pagina-->  
         <header class="intro">
             <div class="container">
@@ -72,34 +76,32 @@
                     <table border="1" style=" width: 100%">
                         <thead>
                             <tr>
-                                <th>ID Tarifa</th>
+                                <th>Empresa</th>
                                 <th>Tarifa</th>
-                                <th>Inicio</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id = "tablaTarifas">
                             <%
-                                /*EJEMPLO!!!!!!! (COMENTAR!)**
-                                ServicioTarifa servicio = new ServicioTarifa();
+                                /*EJEMPLO!!!!!!! (COMENTAR!)**/
+                                ServicioBus servicio = new ServicioBus();
                                 try {
-                                    List<Tarifa> tarifas = servicio.findAll();
-                                    for (Tarifa t : tarifas) {
+                                    List<Bus> buses = servicio.getTodosLosBuses();
+                                    for (Bus b : buses) {
                                         out.println(
-                                                String.format("<tr><td class='blanco'>%d</td> <td class='blanco'>%d</td> <td class='blanco'>%s</td><tr>",
-                                                        t.getIdTarifa(), t.getTarifa(), t.getInicio()
+                                                String.format("<tr> <td class='blanco'>%s</td> <td class='blanco'>%d</td> <tr>",
+                                                        b.getEmpresa().getNombre(), b.getTarifa()
                                                 )
                                         );
                                     }
                                 } catch (Exception ex) {
                                     out.print("<td>" + ex.toString() + "</td>");
                                 }
-                                /*FINAL DE EJEMPLO!*/%>
+                                /*FINAL DE EJEMPLO!*/
+                            %>
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </div>
     </body>
-
 </html>

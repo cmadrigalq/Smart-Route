@@ -18,7 +18,7 @@ class Horario {
                 alert(res);
             } else {
                 res = res.map(e=>{
-                    e.hora = new Date(e.hora)
+                    e.hora = new Date(e.hora);
                     return e;
                 });
                 let tabla = new Table(
