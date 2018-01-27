@@ -391,3 +391,14 @@ th, th{
     height: 100%;
 }
 
+#calRuta{
+    margin-left: 355px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#buscar{
+    margin-left: 405px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

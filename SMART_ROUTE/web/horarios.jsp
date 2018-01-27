@@ -105,7 +105,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="form-group" >
-                <input type="button" id="buscar" value="BUSCAR">
+                <input type="button" class="btn btn-danger" id="buscar" value="BUSCAR">
             </div>
         </div>
     </div>

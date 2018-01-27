@@ -1,5 +1,5 @@
 .datagrid table {     font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-    font-size: 12px;    margin: 45px;     width: 100%; text-align: center;    border-collapse: collapse;
+    font-size: 12px;    margin: auto;     width: 40%; text-align: center;    border-collapse: collapse;
     
 }
 

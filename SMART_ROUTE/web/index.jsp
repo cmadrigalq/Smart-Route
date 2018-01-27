@@ -138,7 +138,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="form-group" >
-                    <input type="button" id="calRuta" value="Calcular Ruta" onclick="calcularRuta()">
+                    <input type="button" class="btn btn-danger" id="calRuta" value="Calcular Ruta" onclick="calcularRuta()">
                 </div>
             </div>
         </div>
