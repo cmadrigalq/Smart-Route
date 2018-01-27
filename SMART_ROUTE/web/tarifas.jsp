@@ -25,19 +25,24 @@
     <body class="fondo">
 
         <!-- menu Encabezado -->       
-        <nav class="navbar navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button"  class="navbar-toggle " data-toggle="collapse" data-target=".navbar-main-collapse">                   
-                    </button>
-                    <a class="navbar-brand page-scroll" href="index.jsp">
-                        <img src="imagenes/logo2.png"/>
-                    </a>
-                </div>
-
-                <!-- lista de links-->
-                <div class="collapse navbar-collapse navbar-right navbar-main-collapse a" >
-                    <ul  class="nav navbar-nav" >
+             <!-- menu Encabezado -->            
+    <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+         <!-- logo--> 
+     <a class="navbar-brand page-scroll" href="index.jsp">
+     <img src="imagenes/logo2.png"/>
+     </a>  
+          <!-- ICONO DE MENU DESPLEGABLE--> 
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+       <ul  class="nav navbar-nav" >
                         <!-- -->
                         <li class="hidden">
                             <a href=""></a>
@@ -53,11 +58,12 @@
                         </li>
                         <li>
                             <a  href="paradas.jsp">Paradas</a>
-                        </li>
+                        </li>                   
+
                     </ul>
-                </div>
-            </div> 
-        </nav>
+    </div>
+  </div>
+</nav>
 
         <!-- top de la pagina-->  
         <header class="intro">
@@ -80,4 +86,5 @@
             </div>
         </div>
     </body>
+    
 </html>
