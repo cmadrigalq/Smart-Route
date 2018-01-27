@@ -1,10 +1,12 @@
-/* global Rutas, valores */
+/*  Ruta */
+
+/* global Ruta, valores */
 
 $(document).ready(_ => {
-    Rutas.buscarBuses("tablaTarifas",
-                                    ["Empresa", "Tarifa"],
-                                    ["empresa", "tarifa"],
-                                    valores[0], valores[1]);
-    
+    Ruta.buscarBuses("tablaTarifas",
+            ["Empresa", "Tarifa"],
+            ["empresa", "tarifa"],
+            valores[0], valores[1]);
+
 });
 

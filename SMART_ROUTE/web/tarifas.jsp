@@ -73,32 +73,8 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="form-group" >
-                    <table border="1" style=" width: 100%">
-                        <thead>
-                            <tr>
-                                <th>Empresa</th>
-                                <th>Tarifa</th>
-                            </tr>
-                        </thead>
-                        <tbody id = "tablaTarifas">
-                            <%
-                                /*EJEMPLO!!!!!!! (COMENTAR!)**/
-                                ServicioBus servicio = new ServicioBus();
-                                try {
-                                    List<Bus> buses = servicio.getTodosLosBuses();
-                                    for (Bus b : buses) {
-                                        out.println(
-                                                String.format("<tr> <td class='blanco'>%s</td> <td class='blanco'>%d</td> <tr>",
-                                                        b.getEmpresa().getNombre(), b.getTarifa()
-                                                )
-                                        );
-                                    }
-                                } catch (Exception ex) {
-                                    out.print("<td>" + ex.toString() + "</td>");
-                                }
-                                /*FINAL DE EJEMPLO!*/
-                            %>
-                        </tbody>
+                    <table id = "tablaTarifas" class="datagrid">
+                        
                     </table>
                 </div>
             </div>
