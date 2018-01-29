@@ -14,5 +14,4 @@ class Parada{
         this.siguienteParada=siguienteParada;
         this.puntoGeografico=puntoGeografico;
     }
-   
 }

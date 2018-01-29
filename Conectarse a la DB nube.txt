@@ -1,4 +1,4 @@
-click derecho sobre Databases
+﻿click derecho sobre Databases
 ->Registrar MySql server
 ->host name:sql9.freemysqlhosting.net
   puerto:3306
@@ -12,4 +12,12 @@ renombrar la conexión que aperece como
 SMART_ROUTES_HOST
 
 ya con eso se tiene acceso a la base de datos desde la nube.  
+
+SELECT pun.descripcion from (
+    SELECT par.puntoGeografico, par.id from parada par, (
+        SELECT ru.primeraParada, ru.ultimaParada from ruta ru, (
+            SELECT bu.ruta1 from bus bu where bu.id = 1
+        ) b WHERE ru.nombre = b.ruta1 
+    ) r where par.id >= r.primeraParada and par.id >= r.ultimaParada 
+) p, punto pun where pun.id = p.puntoGeografico;
   

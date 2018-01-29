@@ -54,6 +54,7 @@ public class Servlet extends HttpServlet {
             Json json = new Json();
             ServicioPuntos sp;
             ServicioHorario sh;
+            ServicioParada sParada;
             ServicioBus sbu;
             Long id;
             switch (accion) {
@@ -107,6 +108,15 @@ public class Servlet extends HttpServlet {
                     id = Long.valueOf(aux);
                     sh = new ServicioHorario();
                     arreglo = sh.getHorariosByBus(Long.parseLong(aux));
+                    jsonText = json.toJson(arreglo);
+                    out.write(jsonText);
+                    break;
+                case "buscarPorRutaParadas":
+                    aux = request.getParameter("arg0").replaceAll("\"","");
+                    aux2 = request.getParameter("arg1").replaceAll("\"","");
+                    id = Long.valueOf(aux);
+                    sParada = new ServicioParada();
+                    arreglo = sParada.getParadasByBus(Integer.parseInt(aux));
                     jsonText = json.toJson(arreglo);
                     out.write(jsonText);
                     break;
