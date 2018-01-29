@@ -53,27 +53,7 @@
       </button>
       
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-       <ul  class="nav navbar-nav" >
-                        <!-- -->
-                        <li class="hidden">
-                            <a href=""></a>
-                        </li>
-                        <li>
-                            <a href="index.jsp">Rutas</a>
-                        </li>
-                        <li>
-                            <a  href="horarios.jsp">Horarios</a>
-                        </li>
-                        <li>
-                            <a  href="tarifas.jsp">Tarifas</a>
-                        </li>
-                        <li>
-                            <a  href="paradas.jsp">Paradas</a>
-                        </li>                   
-
-                    </ul>
-    </div>
+    <%@include file="barra.jsp" %>
   </div>
 </nav>
 

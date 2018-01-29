@@ -36,10 +36,6 @@ function initMap() {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
-
-            google.maps.event.addListener(map, 'click', function (event) {
-                addMarker(event.latLng);
-            });
         }, function () {
             handleLocationError(true, infoWindow, map.getCenter());
         });
@@ -98,6 +94,7 @@ function calcularRuta() {
             alert('error' + status);
         }
     }
+    Punto.ocultarPuntos();
 }
 
 function changeOrigen(lat, long) {

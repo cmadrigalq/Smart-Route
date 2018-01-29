@@ -29,6 +29,15 @@ public class ServicioBus extends ServicioBase{
         }
     }
     
+    public Bus getById(Long id)throws Exception{
+        try{
+            return  em.createNamedQuery("Bus.findById", Bus.class)
+                    .setParameter("id", id)
+                    .getSingleResult();
+        }catch(Exception ex){
+            throw ex;
+        }
+    }
    public String listadoDeNombresEmpresas()throws Exception{
         try{
             String sql = "SELECT "

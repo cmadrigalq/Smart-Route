@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Servicios.ServicioRuta"%>
 <%@page import="Servicios.ServicioBus"%>
 <%@page import="Servicios.ServicioEmpresa"%>
@@ -24,7 +25,8 @@
         <script src="jquery-3.0.0.min.js"></script>
         <script src="css/jquery-1.12.4.min.js" type="text/javascript"></script>
         <script src="js/Horario.js" type="text/javascript"></script>
-        <script src="js/genTable.js" type="text/javascript"></script>
+        <script src="js/Empresa.js" type="text/javascript"></script>
+        <script src="js/EmpresaTarifa.js" type="text/javascript"></script>
         <script src="js/Proxy.js" type="text/javascript"></script>
         <script src="js/Utilitario.js" type="text/javascript"></script>
         <script src="js/horarios_eventos.js" type="text/javascript"></script>
@@ -35,53 +37,33 @@
 
         <!-- menu Encabezado -->       
         <!-- menu Encabezado -->       
-             <!-- menu Encabezado -->            
-    <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-         <!-- logo--> 
-     <a class="navbar-brand page-scroll" href="index.jsp">
-     <img src="imagenes/logo2.png"/>
-     </a>  
-          <!-- ICONO DE MENU DESPLEGABLE--> 
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-       <ul  class="nav navbar-nav" >
-                        <!-- -->
-                        <li class="hidden">
-                            <a href=""></a>
-                        </li>
-                        <li>
-                            <a href="index.jsp">Rutas</a>
-                        </li>
-                        <li>
-                            <a  href="horarios.jsp">Horarios</a>
-                        </li>
-                        <li>
-                            <a  href="tarifas.jsp">Tarifas</a>
-                        </li>
-                        <li>
-                            <a  href="paradas.jsp">Paradas</a>
-                        </li>                   
+        <!-- menu Encabezado -->            
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <!-- logo--> 
+                <a class="navbar-brand page-scroll" href="index.jsp">
+                    <img src="imagenes/logo2.png"/>
+                </a>  
+                <!-- ICONO DE MENU DESPLEGABLE--> 
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>                        
+                    </button>
 
-                    </ul>
-    </div>
-  </div>
-</nav>
-        
+                </div>
+                <%@include file="barra.jsp" %>
+            </div>
+        </nav>
+
         <!-- top de la pagina-->  
         <header class="intro">
             <div class="container">
                 <div class="col-md-8 col-md-offset-2">
                     <img src="imagenes/logo1.png"/>
                     <HR width=100% align="center">
-                    <h1 class="titulo" >Aplicación de rutas inteligentes</h1>
+                    <h1 class="titulo" >AplicaciÃ³n de rutas inteligentes</h1>
                 </div>
             </div>
         </header> 
@@ -107,23 +89,31 @@
                 </select>
             </div>
         </div>
-    </div>
-
-    <div class="row">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form-group" >
+                    <input type="button" class="btn btn-danger" id="buscar" value="BUSCAR">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div id="infoEmpresa" class="datagrid form-group col-md-8 col-md-offset-2"
+                 style="color:#FFF">
+                <center>
+                    <div id="nombreEmpresa">Empresa: </div>
+                    <div id="linkEmpresa">http </div>
+                    <div id="numeroEmpresa">####-####</div>
+                    <div id="tarifaDelBus">$</div>
+                </center>
+            </div>            
+        </div>            
         <div class="col-md-8 col-md-offset-2">
             <div class="form-group" >
-                <input type="button" class="btn btn-danger" id="buscar" value="BUSCAR">
+                <div id="tablaHorarios" class="datagrid">
+
+                </div>
             </div>
         </div>
-    </div>
-
-    <div class="col-md-8 col-md-offset-2">
-        <div class="form-group" >
-            <div id="tablaHorarios" class="datagrid">
-
-            </div>
-        </div>
-    </div>
-</body>
+    </body>
 
 </html>

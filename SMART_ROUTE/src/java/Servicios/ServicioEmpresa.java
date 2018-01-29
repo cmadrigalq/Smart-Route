@@ -29,5 +29,20 @@ public class ServicioEmpresa extends ServicioBase {
             throw ex;
         }
     }
+
+    public Empresa getByBus(Long bus) throws Exception {
+        try {
+            String sql = "SELECT e.* FROM bus b "
+                    + "inner join empresa e "
+                    + "on e.nombre = b.empresa "
+                    + "where b.id = :id";
+            return (Empresa)em.createNativeQuery(sql, Empresa.class)
+                    .setParameter("id",bus)
+                    .getSingleResult();
+        } catch (Exception ex) {
+            throw ex;
+        }
+    }
+
     
 }

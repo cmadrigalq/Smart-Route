@@ -13,7 +13,9 @@ import Servicios.ServicioPuntos;
 import Servicios.ServicioRuta;
 import Utilitarios.Json;
 import entidades.Bus;
+import entidades.Empresa;
 import entidades.Punto;
+import entidades.modelo.EmpresaTarifa;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Serializable;
@@ -56,6 +58,8 @@ public class Servlet extends HttpServlet {
             ServicioHorario sh;
             ServicioParada sParada;
             ServicioBus sbu;
+            ServicioEmpresa se;
+            Empresa empresa;
             Long id;
             switch (accion) {
                 case "todosLosPuntos":
@@ -119,6 +123,19 @@ public class Servlet extends HttpServlet {
                     arreglo = sParada.getParadasByBus(Integer.parseInt(aux));
                     jsonText = json.toJson(arreglo);
                     out.write(jsonText);
+                    break;
+                case "buscaInfoEmpresaByBus":
+                    aux = request.getParameter("arg0").replaceAll("\"", "");
+                    id = Long.valueOf(aux);
+                    se = new ServicioEmpresa();
+                    sbu = new ServicioBus();
+                    empresa = se.getByBus(id);
+                    Bus bus = sbu.getById(id);
+                    EmpresaTarifa emt = new EmpresaTarifa(empresa,bus.getTarifa());
+                    jsonText = json.toJson(emt);
+                    out.write(jsonText);
+                    se = null;
+                    sbu = null;
                     break;
             }
         } catch (Exception ex) {

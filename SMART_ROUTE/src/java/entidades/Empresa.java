@@ -42,8 +42,8 @@ public class Empresa implements Serializable {
     @Lob
     @Column(name = "link")
     private String link;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "empresa", fetch = FetchType.LAZY)
-    private List<Bus> busList;
+    /*@OneToMany(cascade = CascadeType.ALL, mappedBy = "empresa", fetch = FetchType.LAZY)
+    private List<Bus> busList;*/
 
     public Empresa() {
     }
@@ -76,14 +76,14 @@ public class Empresa implements Serializable {
         this.link = link;
     }
 
-    @XmlTransient
-    public List<Bus> getBusList() {
-        return busList;
-    }
-
-    public void setBusList(List<Bus> busList) {
-        this.busList = busList;
-    }
+//    @XmlTransient
+//    public List<Bus> getBusList() {
+//        return busList;
+//    }
+//
+//    public void setBusList(List<Bus> busList) {
+//        this.busList = busList;
+//    }
 
     @Override
     public int hashCode() {
